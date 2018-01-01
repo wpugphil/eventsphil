@@ -7,13 +7,11 @@
 
 # Webroot #
 ###########
-!web/
-web/*
+#!web/
+#web/*
 !web/index.php
 !web/wp-cli.yml
 !web/wp-config.php
-!web/wp-content/
-web/wp-content/*
 !web/wp-content/mu-plugins/
 web/wp-content/mu-plugins/*
 !web/wp-content/mu-plugins/custom
@@ -22,10 +20,10 @@ web/wp-content/mu-plugins/*
 web/wp-content/plugins/*
 !web/wp-content/plugins/custom/
 !web/wp-content/plugins/.gitkeep
-!web/wp-content/themes
-web/wp-content/themes/*
-!web/wp-content/themes/custom/
-!web/wp-content/themes/.gitkeep
+#!web/wp-content/themes
+#web/wp-content/themes/*
+#!web/wp-content/themes/custom/
+#!web/wp-content/themes/.gitkeep
 !web/wp-content/config/
 web/wp
 !web/private/
@@ -39,6 +37,11 @@ web/private/scripts/quicksilver
 # Keep all additions above the "cut" line.
 
 .localnotes
+web/wp-content/themes/bootstrapfast
+web/wp-content/themes/twentyseventeen
+
+web/wp-content/themes/eventsph/node_modules
+web/wp-content/themes/eventsph/bower_components
 
 # :::::::::::::::::::::: cut ::::::::::::::::::::::
 
