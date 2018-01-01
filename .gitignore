@@ -38,9 +38,11 @@ web/private/scripts/quicksilver
 # Add directories containing build assets below.
 # Keep all additions above the "cut" line.
 
-
+.localnotes
 
 # :::::::::::::::::::::: cut ::::::::::::::::::::::
+
+.localnotes
 
 ###
 ### Pantheon site .gitignore section
@@ -109,3 +111,5 @@ Thumbs.db
 # SASS #
 ##########
 .sass-cache
+
+.localnotes

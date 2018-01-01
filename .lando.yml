@@ -1,0 +1,7 @@
+name: eventsphil
+recipe: pantheon
+config:
+  framework: wordpress
+  site: eventsphil
+  id: b055e1dd-bbf4-402c-a846-8cedde42c824
+  webroot: web
