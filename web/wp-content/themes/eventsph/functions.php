@@ -25,4 +25,4 @@ add_action( 'wp_enqueue_scripts', 'bsft_theme_enqueue_styles' );
 /**
  * Load VIP helper.
  */
-require_once( get_stylesheet_directory() . '/inc/vip-helper.php' );
+require_once get_stylesheet_directory() . '/inc/vip-helper.php';
