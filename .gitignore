@@ -37,6 +37,9 @@ web/private/scripts/quicksilver
 # Keep all additions above the "cut" line.
 
 .localnotes
+wiki/*
+wiki/
+
 web/wp-content/themes/bootstrapfast
 web/wp-content/themes/twentyseventeen
 
