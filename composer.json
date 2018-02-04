@@ -27,6 +27,7 @@
     "wpackagist-plugin/caldera-forms": "^1.5.9.1",
     "wpackagist-plugin/ninja-forms": "^3.2.11",
     "wpackagist-plugin/the-events-calendar": "^4.6.10.1",
+		"wpackagist-plugin/wordpress-importer": "^0.6.3",
 		"wpackagist-theme/twentyseventeen": "^1.1",
     "wpackagist-theme/bootstrapfast": "^1.0.5",
     "wpackagist-theme/cactus": "^1.2.0"
