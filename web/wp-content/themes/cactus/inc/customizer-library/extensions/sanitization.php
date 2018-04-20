@@ -12,8 +12,8 @@ if ( ! function_exists( 'customizer_library_sanitize_text' ) ) :
  * @return string               The sanitized string.
  */
 function customizer_library_sanitize_text( $string ) {
-	global $allowedtags;
-	return wp_kses( $string , $allowedtags );
+	global $allowedposttags;
+	return wp_kses( $string , $allowedposttags );
 }
 endif;
 

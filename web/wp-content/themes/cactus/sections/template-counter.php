@@ -4,6 +4,7 @@ $counter = cactus_option('counter');
 $columns = absint(cactus_option('columns_'.$cactus_section_key));
 $section_title = cactus_option('section_title_'.$cactus_section_key);
 $section_subtitle = cactus_option('section_subtitle_'.$cactus_section_key);
+$animation = cactus_option('animation_'.$cactus_section_key);
 ?>
 <div class="cactus-section-content">
   <div class="cactus-container"> 
@@ -11,7 +12,7 @@ $section_subtitle = cactus_option('section_subtitle_'.$cactus_section_key);
     <h2 class="cactus-section-title text-center <?php echo 'section_title_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( $section_title , $allowedposttags );?></h2>
      <?php }?>
      <?php if($section_subtitle!='' || is_customize_preview()){?>
-   	 <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( $section_subtitle , $allowedposttags );?></p>
+   	 <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( do_shortcode($section_subtitle) , $allowedposttags );?></p>
      <?php }?>
      
     <ul class="cactus-counter cactus-list-md-<?php echo $columns;?> cactus-list-sm-2 full counter_selective">
@@ -27,7 +28,7 @@ $section_subtitle = cactus_option('section_subtitle_'.$cactus_section_key);
       <li>
         <div class="cactus-counter-item">
           <div class="cactus-counter-figure"> <i class="fa fa-<?php echo esc_attr($icon);?>" style="font-size: 50px;"></i> </div>
-          <div class="cactus-counter-num counter" data-counterup-nums="<?php echo esc_attr($item['number']);?>"><?php echo esc_attr($item['number']);?></div>
+          <div class="cactus-counter-num <?php if($animation=='1') echo 'counter';?>" data-counterup-nums="<?php echo esc_attr($item['number']);?>"><?php echo esc_attr($item['number']);?></div>
           <h4 class="cactus-counter-title"><?php echo esc_attr($item['title']);?></h4>
         </div>
       </li>

@@ -13,6 +13,13 @@ $google_map_api = cactus_option('google_map_api_'.$cactus_section_key);
 $google_map_height = cactus_option('google_map_height_'.$cactus_section_key);
 $google_map_zoom = cactus_option('google_map_zoom_'.$cactus_section_key);
 
+function cactus_google_map_btn_text(){
+	global $cactus_section_key;
+	$google_map_btn_text = cactus_option('google_map_btn_text_'.$cactus_section_key);
+	return $google_map_btn_text;
+}
+add_filter('cc_button_text','cactus_google_map_btn_text');
+
 $hide1 = '';
 $hide2 = '';
 if( $style=='' || $style=='1' ){
@@ -40,7 +47,7 @@ if( $style=='2' ){
       <div class="cactus-box-inner">
         <div class="cactus-box-content">
           <h2 class="cactus-section-title <?php echo 'section_title_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.8" data-animationtype="fadeInUp"><?php echo wp_kses( $section_title , $allowedposttags );?></h2>
-   		 <p class="cactus-section-desc <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.8" data-animationtype="fadeInUp"><?php echo wp_kses( $section_subtitle , $allowedposttags );?></p>                          
+   		 <p class="cactus-section-desc <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.8" data-animationtype="fadeInUp"><?php echo wp_kses( do_shortcode($section_subtitle) , $allowedposttags );?></p>                          
                                             
           <ul class="cactus-contact-info cactus-list-md-3">
           <?php if($address!=''):?>
@@ -81,7 +88,7 @@ if( $style=='2' ){
         <div class="cactus-box-inner">
             <div class="cactus-box-content">
                 <h2 class="cactus-section-title text-left <?php echo 'section_title_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( $section_title , $allowedposttags );?></h2>
-                <p class="cactus-section-desc text-left <?php echo 'section_subtitle_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( $section_subtitle , $allowedposttags );?></p>   
+                <p class="cactus-section-desc text-left <?php echo 'section_subtitle_'.$cactus_section_key.'_selective';?>"><?php echo wp_kses( do_shortcode($section_subtitle) , $allowedposttags );?></p>   
                 <ul class="cactus-contact-info cactus-list-md-3">
                  <?php if($address!=''):?>
                     <li  class="<?php echo $cactus_animation;?>" data-animationduration="0.4" data-animationtype="fadeInUp">
@@ -127,7 +134,7 @@ if( $style=='2' ){
 <img src="<?php echo esc_url($image);?>" alt="">
 <?php else:?>
 <?php
-echo do_shortcode('[cactus_map address="'.esc_attr($google_map_address).'" key="'.esc_attr($google_map_api).'"  height="'.esc_attr($google_map_height).'"  zoom="'.absint($google_map_zoom).'"]');
+echo do_shortcode('[cactus_map address="'.esc_attr($google_map_address).'" key="'.esc_attr($google_map_api).'"  height="'.esc_attr($google_map_height).'" button_text="'.$google_map_btn_text.'" zoom="'.absint($google_map_zoom).'"]');
 ?>
 <?php endif;?>
 </div>

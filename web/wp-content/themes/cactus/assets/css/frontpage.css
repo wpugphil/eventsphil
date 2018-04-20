@@ -630,6 +630,7 @@ input[type="submit"].form-control {
 
 .cactus-gallery-item {
     position: relative;
+	text-align: center;
 }
 
 .cactus-gallery-item {
@@ -1005,7 +1006,7 @@ ul.cactus-portfolio-list[class*="cactus-list-md"] > li {
 }
 
 .cactus-contact-form .form-control {
-    border-radius:100px;
+    border-radius: 5px;
 }
 
 /*Slider*/
@@ -1209,7 +1210,7 @@ ul.cactus-portfolio-list[class*="cactus-list-md"] > li {
 }
 
 .cactus-subscribe-form .form-control {
-    border-radius: 100px;
+    border-radius: 5px;
 }
 
 
@@ -1246,7 +1247,7 @@ ul.cactus-portfolio-list[class*="cactus-list-md"] > li {
 }
 
 #subscribe-email input {
-    border-radius: 100px;
+    border-radius: 5px;
 }
 
 #subscribe-submit {
@@ -1336,4 +1337,43 @@ ul.cactus-portfolio-list[class*="cactus-list-md"] > li {
 
 .cactus-section-counter .cactus-section-content {
     padding: 100px 0;
+}
+
+/*text align fix*/
+ul[class*="cactus-list"].cactus-services,
+ul[class*="cactus-list"].cactus-portfolio-list,
+ul[class*="cactus-list"].cactus-testimonials,
+ul[class*="cactus-list"].cactus-team,
+ul[class*="cactus-list"].cactus-blog-list,
+ul[class*="cactus-list"].cactus-counter {
+    text-align: center;
+    font-size: 0;
+}
+
+ul[class*="cactus-list"].cactus-services > li,
+ul[class*="cactus-list"].cactus-portfolio-list > li,
+ul[class*="cactus-list"].cactus-testimonials > li,
+ul[class*="cactus-list"].cactus-team > li,
+ul[class*="cactus-list"].cactus-blog-list > li,
+ul[class*="cactus-list"].cactus-counter > li {
+    display: inline-block;
+    float:none;
+    vertical-align: top;
+    text-align: left;
+}
+
+.cactus-clients-carousel .owl-stage-outer {
+    text-align: center;
+}
+
+.cactus-clients-carousel .owl-stage {
+    display: inline-block;
+}
+
+.cactus-section-shop .woocommerce .quantity .qty {
+    color: #333;
+}
+
+.cactus-section-shop .woocommerce table.cart td.actions .input-text {
+    color: #333;
 }

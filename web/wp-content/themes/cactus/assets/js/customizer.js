@@ -33,6 +33,9 @@ jQuery(document).ready(function($) {
             $('#customize-control-cactus-button_text_banner').show();
             $('#customize-control-cactus-button_link_banner').show();
 			$('#customize-control-cactus-video_poster_banner').show();
+			
+			$('#customize-control-cactus-slider_autoplay_banner').hide();
+			$('#customize-control-cactus-autoplaytimeout_banner').hide();
 
         } else {
 
@@ -43,6 +46,9 @@ jQuery(document).ready(function($) {
             $('#customize-control-cactus-button_text_banner').hide();
             $('#customize-control-cactus-button_link_banner').hide();
 			$('#customize-control-cactus-video_poster_banner').hide();
+			
+			$('#customize-control-cactus-slider_autoplay_banner').show();
+			$('#customize-control-cactus-autoplaytimeout_banner').show();
 
         }
     }
@@ -750,7 +756,7 @@ jQuery(document).ready(function($) {
         var html = '';
         var style = $('#customize-control-cactus-style_testimonial').find('input[type="radio"]:checked').val();
         $('#customize-control-cactus-testimonial .repeater-fields > li').each(function(index, element) {
-            console.log(style);
+            
             var name = $(this).find('input[data-field="name"]').val();
             var avatar = $(this).find('input[data-field="avatar"]').parents('.repeater-field-image').find('img').attr('src');
             var byline = $(this).find('input[data-field="byline"]').val();

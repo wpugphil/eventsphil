@@ -117,7 +117,31 @@ function cactus_template_loop_product_title()
     do_action( 'cactus_template_loop_add_to_cart',array('class'=> 'button '.$add_to_cart_link_class) );
     
 }
+
 ?>
+<?php
+	if(is_archive()){
+		$sidebar_layout = apply_filters('cactus_woo_archive_sidebar_layout',cactus_option('woo_archives_sidebar_layout'));
+		$sidebar = 'woo-archives';
+		}
+	if(is_single()){
+		$sidebar_layout = apply_filters('cactus_woo_archive_sidebar_layout',cactus_option('woo_single_sidebar_layout'));
+		$sidebar = 'woo-single';
+		}
+
+switch($sidebar_layout){
+		case 'left':
+			$aside_class = 'left-aside';
+		break;
+		case 'right':
+			$aside_class = 'right-aside';
+		break;
+		default:
+			$aside_class = 'no-aside';
+		break;
+		
+		};
+		?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 <section class="page-title-bar title-left">
             <div class="container">
@@ -139,13 +163,16 @@ function cactus_template_loop_product_title()
         
 <div class="post-wrap">
 <div class="container">
-<div class="page-inner row no-aside">
+<div class="page-inner row <?php echo $aside_class; ?>">
 <div class="col-main">
 	<section class="page-main" role="main" id="content">
 	<div class="page-content">
 	<?php woocommerce_content(); ?>
 	</div>
 </div>
+
+<?php cactus_get_sidebar($sidebar_layout,$sidebar);?>
+
 </div>
 </div>
 </div>

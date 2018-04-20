@@ -9,7 +9,7 @@ $button_link = cactus_option('button_link_'.$cactus_section_key);
 <div class="cactus-section-content">
   <div class="cactus-container">
     <h2 class="cactus-section-title text-center <?php echo 'section_title_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.6" data-animationtype="fadeInUp"><?php echo wp_kses( $section_title , $allowedposttags );?></h2>
-      <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.6" data-animationtype="fadeInUp"><?php echo wp_kses( $section_subtitle , $allowedposttags );?></p>
+      <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.6" data-animationtype="fadeInUp"><?php echo wp_kses( do_shortcode($section_subtitle) , $allowedposttags );?></p>
       
       <div class="section_shop_selective woocommerce <?php echo $cactus_animation;?>" data-animationduration="0.8" data-animationtype="fadeInUp">
       

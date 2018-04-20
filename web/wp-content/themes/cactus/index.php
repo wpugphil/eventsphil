@@ -34,6 +34,7 @@
  <!--Main Area-->
 <?php echo apply_filters('cactus_page_title_bar','','category');?> 
         <div class="page-wrap">
+        <?php do_action('cactus_before_page_wrap');?>
             <div class="container">
                 <div class="<?php echo $aside_class; ?>">
                     <div class="col-main">
@@ -42,7 +43,7 @@
                                 <!--blog list begin-->
                                 <div class="<?php echo $wrap_class; ?>">
                                 
-                          <?php
+           <?php
 			if ( have_posts() ) :
 
 				while ( have_posts() ) : the_post();
@@ -63,11 +64,13 @@
                                 <!--blog list end-->
                  
                             </div>
-                            <div class="post-attributes"><?php the_posts_pagination( array(
-					'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous page', 'cactus' ) . '</span>',
-					'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'cactus' ) . '</span><i class="fa fa-arrow-right"></i>' ,
+                 <div class="post-attributes">
+							<?php the_posts_pagination( array(
+					'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous Page', 'cactus' ) . '</span>',
+					'next_text' => '<span class="screen-reader-text">' . __( 'Next Page', 'cactus' ) . '</span><i class="fa fa-arrow-right"></i>' ,
 					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'cactus' ) . ' </span>',
-				) );?></div>
+				) );?>
+                </div>
                         </section>
                     </div>
                     <?php cactus_get_sidebar($page_sidebar_layout,'archives');?>

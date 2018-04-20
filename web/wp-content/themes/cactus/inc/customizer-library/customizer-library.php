@@ -42,6 +42,8 @@ if ( ! class_exists( 'Customizer_Library' ) ) :
 	require plugin_dir_path( __FILE__ ) . 'custom-controls/customizer-radio-image/class-customize-control-radio-image.php';
 	require plugin_dir_path( __FILE__ ) . 'custom-controls/select-multiple/class-select-multiple.php';
 	require plugin_dir_path( __FILE__ ) . 'custom-controls/editor/editor-control.php';
+	require plugin_dir_path( __FILE__ ) . 'custom-controls/customizer-range-value-control/class-customizer-range-value-control.php';
+	
 
 	/**
 	 * Class wrapper with useful methods for interacting with the theme customizer.

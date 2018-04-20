@@ -221,6 +221,15 @@ if ( ! function_exists( 'customizer_library_register' ) ) : /**
 							)
 						);
 						break;
+						case 'range-value':
+
+						$wp_customize->add_control(
+							new Customizer_Range_Value_Control(
+								$wp_customize, $option['id'], $option
+							)
+						);
+
+						break;
 				}
 			}
 		}

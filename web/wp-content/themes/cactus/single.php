@@ -17,6 +17,7 @@
 ?>
 <?php echo apply_filters('cactus_page_title_bar','','post');?> 
 <div class="page-wrap">
+<?php do_action('cactus_before_page_wrap');?>
   <div class="container">
     <div class="page-inner row <?php echo $aside_class; ?>">
       <div class="col-main">
@@ -60,16 +61,14 @@
                 <?php the_author_meta('description');?>
               </div>
             </div>
-            <!--About Author End-->
+            <?php if ( comments_open() ) :?>
             <!--Comments Area-->
             <div class="comments-area text-left">
               <?php
-			  // If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
 						comments_template();
-					endif;
 			  ?>
-            </div>            
+            </div>
+             <?php endif;?>
           </div>
         </section>
       </div>

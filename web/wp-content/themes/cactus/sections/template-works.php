@@ -17,7 +17,7 @@ if( $style == '2' ){
 
   <div class="works_container_selective <?php echo $container;?>">
     <h2 class="cactus-section-title text-center <?php echo 'section_title_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.9" data-animationtype="fadeInUp"><?php echo wp_kses( $section_title , $allowedposttags );?></h2>
-    <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.9" data-animationtype="fadeInUp"><?php echo wp_kses( $section_subtitle , $allowedposttags );?></p>
+    <p class="cactus-section-desc text-center <?php echo 'section_subtitle_'.$cactus_section_key.'_selective '.$cactus_animation;?>" data-animationduration="0.9" data-animationtype="fadeInUp"><?php echo wp_kses( do_shortcode($section_subtitle) , $allowedposttags );?></p>
     <?php 
 	$tags = array();
 	$items = '';
@@ -63,7 +63,7 @@ if( $style == '2' ){
 					<div class="cactus-gallery-item '.$cactus_animation.'" data-animationduration="'.$time.'" data-animationtype="fadeInUp">
 						<div class="cactus-gallery-figure">
 							<img src="'.esc_url($image).'" alt="'.esc_attr($item['title']).'">
-							'.(($link!='')?'<a href="'.esc_url($link).'">':'').'
+							
 								<div class="cactus-overlay">
 									<div class="cactus-overlay-content">
 										<div>
@@ -72,7 +72,7 @@ if( $style == '2' ){
 										</div>
 									</div>                   
 								</div>
-							'.(($link!='')?'</a>':'').'
+							
 						</div>
 						<h4>'.(($link!='')?'<a href="'.esc_url($link).'">':'').''.esc_attr($item['title']).''.(($link!='')?'</a>':'').'</h4>
 					</div>
@@ -92,12 +92,14 @@ if( $style == '2' ){
       
     <nav class="cactus-portfolio-filter">
       <ul>
-	  <?php if( !empty($tags) ):?>
+      <?php  $display_filter = cactus_option('display_filter_'.$cactus_section_key);?>
+	  <?php if( !empty($tags) && $display_filter == '1' ):?>
         <li class="active"><a href="javascript:;" data-filter="*"><?php _e( 'All', 'cactus' );?></a></li>
         <?php foreach($tags as $tag){
 				echo $tag;
 			}
 			?>
+            
 			<?php endif;?>
             <li class="gap"></li>
             <li class="gap"></li>

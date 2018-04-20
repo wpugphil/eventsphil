@@ -8,23 +8,27 @@
 </head>
 <?php
 	$body_class = 'page blog';
+	$scheme = cactus_option('scheme');
+	
 	if ( is_page_template('template-sections.php') )
 		$body_class .= ' frontpage';
+
+		$body_class .= ' '.$scheme;
+	
 	
 ?>
 <body <?php body_class( $body_class ); ?>>
+
   <div class="wrapper">
         <!--Header-->
-        <?php
-		$header_image = get_header_image();
-		if ($header_image)
-			echo '<img class="header-image" src="'.esc_url($header_image).'" alt="" />';
-		
-		?>
+        <?php get_template_part( 'template-parts/header/header', 'image' ); ?>
         <?php 
 		$header_style = cactus_option('header_style');
 		if($header_style=='' || $header_style=='default' )
 			$header_style = 'inline';
-		get_template_part( 'template-parts/header/header', $header_style ); 
+		
+		$hide_header = apply_filters('cactus_hide_header',0);
+		if( $hide_header != '1' )
+			get_template_part( 'template-parts/header/header', $header_style ); 
 		
 		?>

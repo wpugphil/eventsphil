@@ -43,7 +43,7 @@
 }
 
 #cactus-editor-container .close span:before {
-    content: "¡Á";
+    content: "x";
 }
 
 #cactus-editor-container .close:active {

@@ -263,6 +263,15 @@ function cactus_customizer_library_options() {
 			'transport' => $transport,
 		);
 	
+	$options['sticky_logo'] = array(
+				'id' => 'sticky_logo',
+				'label'   => __( 'Sticky Header Logo', 'cactus' ),
+				'section' => 'title_tagline',
+				'type'    => 'image',
+				'default' => '',
+				//'transport' => 'postMessage',
+			);
+	
 	$section = 'section-header-topbar';
 
 	$sections[] = array(
@@ -403,6 +412,15 @@ function cactus_customizer_library_options() {
 		'priority' => '2',
 		'panel' => $panel
 	);
+	$options['display_search_icon'] = array(
+			'id' => 'display_search_icon',
+			'label'   => __( 'Display Search Icon', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			'default' => '1',
+			//'transport' => $transport,
+		);
+	
 	
 	$options['title_bar_layout'] = array(
 			'id' => 'title_bar_layout',
@@ -429,7 +447,7 @@ function cactus_customizer_library_options() {
 			'default' => '1',
 			'transport' => $transport,
 		);
-	
+
 	$options['header_style'] = array(
 			'id' => 'header_style',
 			'label'   => __( 'Navigation Bar Style', 'cactus' ),
@@ -444,7 +462,7 @@ function cactus_customizer_library_options() {
 			'default' => 'inline',
 			
 		);
-	
+		
 	$options['display_custom_main_menu'] = array(
 			'id' => 'display_custom_main_menu',
 			'label'   => __( 'Display Main Menu Items on Frontpage', 'cactus' ),
@@ -453,9 +471,9 @@ function cactus_customizer_library_options() {
 			'description' => __( 'Display main menu items on frontpage instead of primary menu.', 'cactus' ),
 			'default' => '1',
 		);
-		
+	
 	$cactus_sections = cactus_get_sections();
-		
+	
 	$default_menu_items = array();
 	foreach( $cactus_sections as $key => $value ){
 		if(isset($value['menu_title']) && $value['menu_title'] !='' ){
@@ -481,7 +499,7 @@ function cactus_customizer_library_options() {
 				),
 				'default' =>  $default_menu_items
 				);
-		
+	
 	/* Inline Header Options */
 	$options['inline_header_menu_position'] = array(
 			'id' => 'inline_header_menu_position',
@@ -525,7 +543,7 @@ function cactus_customizer_library_options() {
 						),*/
 						)
 				);
-				
+		
 	$options['classic_header_logo_right'] = array(
 				'id' => 'classic_header_logo_right',
 				'label'   => __( 'Widgets: Logo Row(Right)', 'cactus' ),
@@ -585,7 +603,6 @@ function cactus_customizer_library_options() {
 				),
 			'default' => 'left',
 		);
-		
 	
 	/* Split Header Options */
 
@@ -595,6 +612,7 @@ function cactus_customizer_library_options() {
 			array('title'=> 'Menu Item 3','link'=>'#','icon'=>''),
 			array('title'=> 'Menu Item 4','link'=>'#','icon'=>''),
 			);
+	
 	$options['split_header_left_menu'] = array(
 			'id' => 'split_header_left_menu',
 			'label'   => __( 'Left Menu Items', 'cactus' ),
@@ -613,7 +631,7 @@ function cactus_customizer_library_options() {
 				),
 			'default' =>  $default_menu_items
 		);
-				
+			
 	$options['split_header_menu_position'] = array(
 			'id' => 'split_header_menu_position',
 			'label'   => __( 'Menu Position', 'cactus' ),
@@ -650,7 +668,6 @@ function cactus_customizer_library_options() {
 			'priority' => '10',
 			'panel' => $panel
 		);
-		
 
 		$options['section_hide_'.$key] = array(
 				'id' => 'section_hide_'.$key,
@@ -660,9 +677,7 @@ function cactus_customizer_library_options() {
 				'default' => $value['hide'],
 				'transport' => 'postMessage',
 			);
-			
-	
-			
+		
 		switch($key){
 			
 			case "service":
@@ -710,7 +725,7 @@ function cactus_customizer_library_options() {
 					),
 					'default' => '1'
 				);
-				
+			
 			break;
 			case "team":
 			$options['style_'.$key] = array(
@@ -812,16 +827,31 @@ function cactus_customizer_library_options() {
 				),
 				'default' =>  array(
 					array(
-						'title' => 'MODERN. CLEAN. ELEGANT.',
+						'title' => 'Edit Your Site in Cusotmize',
 						"subtitle" => "Easy to Use. No Code or Design Skills Required.",
 						"image" => $imagepath."bg.jpg",
-						"btn_text" => "Learn More",
-						"btn_link" => "",
+						"btn_text" => "Open Customizer",
+						"btn_link" => admin_url('customize.php'),
 						
 						),
 					) 
 			);
-			
+			$options['slider_autoplay_'.$key] = array(
+					'id' => 'slider_autoplay_'.$key,
+					'label'   => __( 'AutoPlay', 'cactus' ),
+					'section' => $section,
+					//'transport' => 'postMessage',
+					'type'    => 'checkbox',
+					'default' => '1'
+				);
+			$options['autoplaytimeout_'.$key] = array(
+					'id' => 'autoplaytimeout_'.$key,
+					'label'   => __( 'AutoPlay Timeout', 'cactus' ),
+					'section' => $section,
+					'type'    => 'text',
+					//'transport' => 'postMessage',
+					'default' => 5000,
+				);
 			
 			$options['video_poster_'.$key] = array(
 				'id' => 'video_poster_'.$key,
@@ -927,7 +957,14 @@ function cactus_customizer_library_options() {
 					'section' => $section,
 					'transport' => 'postMessage',
 					'type'    => 'text',
-					'default' => '100'
+					'type'    => 'range-value',
+					'default' => '100',
+					'input_attrs' => array(
+						'min'    => 50,
+						'max'    => 500,
+						'step'   => 1,
+						'suffix' => 'px',
+				),
 				);
 				
 			break;
@@ -956,7 +993,7 @@ function cactus_customizer_library_options() {
 				'fields' => array(
 					'icon_type'=>array('type'=>'select','default'=>'icon','choices'=>array('icon'=>esc_attr__( 'Font-awsome Icon', 'cactus' ),'image'=>esc_attr__( 'Image Icon', 'cactus' )),'label'=> esc_attr__( 'Icon Type', 'cactus' )),
 					'icon'=>array('type'=>'iconpicker','default'=>'','label'=> esc_attr__( 'Font-awsome Icon', 'cactus' ),'description'=>  sprintf(__( 'Full list of FA icons could be found at <br />
-<a href="%s" target="_blank">%s</a>', 'cactus' ),esc_url('http://fontawesome.io/icons/'),esc_url('http://fontawesome.io/icons/'))),
+<a href="%s" target="_blank">%s</a>', 'cactus' ),esc_url('https://fontawesome.com/v4.7.0/icons/'),esc_url('https://fontawesome.com/v4.7.0/icons/'))),
 					'image'=>array('type'=>'image','default'=>'','label'=> esc_attr__( 'Image Icon', 'cactus' )),
 					'title'=>array('type'=>'text','default'=>'','label'=> esc_attr__( 'Title', 'cactus' )),
 					'text'=>array('type'=>'textarea','default'=> '','label'=> esc_attr__( 'Text', 'cactus' )),
@@ -1083,6 +1120,16 @@ function cactus_customizer_library_options() {
 		
 					) 
 			);
+			
+			$options['display_filter_'.$key] = array(
+					'id' => 'display_filter_'.$key,
+					'label'   => __( 'Display Filter Headings', 'cactus' ),
+					'section' => $section,
+					//'transport' => 'postMessage',
+					'type'    => 'checkbox',
+					'default' => '1'
+				);
+				
 			break;
 			
 			case "promo":
@@ -1185,7 +1232,15 @@ function cactus_customizer_library_options() {
 			break;
 			
 			case "counter":
-			
+				
+				$options['animation_'.$key] = array(
+					'id' => 'animation_'.$key,
+					'label'   => __( 'Enable Animation', 'cactus' ),
+					'section' => $section,
+					'type'    => 'checkbox',
+					'default' => '1'
+				);
+				
 				$options['columns_'.$key] = array(
 					'id' => 'columns_'.$key,
 					'label'   => __( 'Columns', 'cactus' ),
@@ -1208,7 +1263,7 @@ function cactus_customizer_library_options() {
 				'fields' => array(
 					'title'=>array('type'=>'text','default'=>'','label'=> __( 'Title', 'cactus' )),
 					'icon'=>array('type'=>'iconpicker','default'=>'','label'=> __( 'Font-awsome Icon', 'cactus' ),'description'=>  sprintf(__( 'Full list of FA icons could be found at <br />
-<a href="%s" target="_blank">%s</a>', 'cactus' ),esc_url('http://fontawesome.io/icons/'),esc_url('http://fontawesome.io/icons/'))),
+<a href="%s" target="_blank">%s</a>', 'cactus' ),esc_url('https://fontawesome.com/v4.7.0/icons/'),esc_url('https://fontawesome.com/v4.7.0/icons/'))),
 					'number'=>array('type'=>'text','default'=> '100','label'=> __( 'Number', 'cactus' )),
 				
 				),
@@ -1239,7 +1294,14 @@ function cactus_customizer_library_options() {
 			break;
 			
 			case "testimonial":
-			
+				$options['columns_'.$key] = array(
+					'id' => 'columns_'.$key,
+					'label'   => __( 'Columns', 'cactus' ),
+					'section' => $section,
+					'type'    => 'select',
+					'choices' => array( 2=>2,3=>3,4=>4 ),
+					'default' => '3'
+				);
 				$options['testimonial'] = array(
 				'id' => 'testimonial',
 				'label'   => __( 'Testimonial', 'cactus' ),
@@ -1275,6 +1337,16 @@ function cactus_customizer_library_options() {
 			break;
 			
 			case "clients":
+			
+			$options['columns_'.$key] = array(
+					'id' => 'columns_'.$key,
+					'label'   => __( 'Columns', 'cactus' ),
+					'section' => $section,
+					'type'    => 'select',
+					'choices' => array(1=>1, 2=>2,3=>3,4=>4,5=>5,6=>6 ),
+					'default' => '4'
+				);
+				
 			$options['clients'] = array(
 				'id' => 'clients',
 				'label'   => __( 'Clients', 'cactus' ),
@@ -1432,6 +1504,14 @@ function cactus_customizer_library_options() {
 					'type'    => 'text',
 					'default' => '15',
 				);
+				$options['google_map_btn_text_'.$key] = array(
+					'id' => 'google_map_btn_text_'.$key,
+					'label'   => __( 'Button Text', 'cactus' ),
+					'section' => $section,
+					'type'    => 'text',
+					'default' => 'SEND YOUR MESSAGE',
+				);
+				
 				$plugin = 'cactus-companion';
 				$plugin_status = Cactus_Plugin_Install_Helper::instance()->check_plugin_state($plugin);
 
@@ -1601,14 +1681,7 @@ function cactus_customizer_library_options() {
 			'default' => '',
 		);
 	
-	$options['display_scroll_to_top'] = array(
-			'id' => 'display_scroll_to_top',
-			'label'   => __( 'Enable Scroll to Top Button', 'cactus' ),
-			'section' => $section,
-			'type'    => 'checkbox',
-			'transport' => 'postMessage', 
-			'default' => '1',
-		);
+	
 		
 	$options['footer_style'] = array(
 					'id' => 'footer_style',
@@ -1777,58 +1850,93 @@ function cactus_customizer_library_options() {
 		'id' => 'body_font_size',
 		'label'   => __( 'Body Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,30,1), range(8,30,1)),
+		'type'    => 'range-value',
 		'default' => '14',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	
 	$options['h1_font_size'] = array(
 		'id' => 'h1_font_size',
 		'label'   => __( 'H1 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '36'
+		'type'    => 'range-value',
+		'default' => '36',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['h2_font_size'] = array(
 		'id' => 'h2_font_size',
 		'label'   => __( 'H2 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '30'
+		'type'    => 'range-value',
+		'default' => '30',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['h3_font_size'] = array(
 		'id' => 'h3_font_size',
 		'label'   => __( 'H3 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '24'
+		'type'    => 'range-value',
+		'default' => '24',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['h4_font_size'] = array(
 		'id' => 'h4_font_size',
 		'label'   => __( 'H4 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '20'
+		'type'    => 'range-value',
+		'default' => '20',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['h5_font_size'] = array(
 		'id' => 'h5_font_size',
 		'label'   => __( 'H5 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '18'
+		'type'    => 'range-value',
+		'default' => '18',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['h6_font_size'] = array(
 		'id' => 'h6_font_size',
 		'label'   => __( 'H6 Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,50,1), range(8,50,1)),
-		'default' => '16'
+		'type'    => 'range-value',
+		'default' => '16',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	
 	$section = 'section-font-size-section';
@@ -1843,39 +1951,59 @@ function cactus_customizer_library_options() {
 		'id' => 'section_title_font_size',
 		'label'   => __( 'Section Title Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,60,1), range(8,60,1)),
+		'type'    => 'range-value',
 		'default' => '40',
 		'transport' => 'postMessage',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	$options['section_subtitle_font_size'] = array(
 		'id' => 'section_subtitle_font_size',
 		'label'   => __( 'Section Subtitle Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,30,1), range(8,30,1)),
+		'type'    => 'range-value',
 		'default' => '14',
 		'transport' => 'postMessage',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	
 	$options['section_item_title_font_size'] = array(
 		'id' => 'section_item_title_font_size',
 		'label'   => __( 'Section Item Ttile Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,30,1), range(8,30,1)),
+		'type'    => 'range-value',
 		'default' => '20',
 		'transport' => 'postMessage',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	
 	$options['section_content_font_size'] = array(
 		'id' => 'section_content_font_size',
 		'label'   => __( 'Section Content Font Size', 'cactus' ),
 		'section' => $section,
-		'type'    => 'select',
-		'choices' =>  array_combine(range(8,30,1), range(8,30,1)),
+		'type'    => 'range-value',
 		'default' => '14',
 		'transport' => 'postMessage',
+		'input_attrs' => array(
+			'min'    => 1,
+			'max'    => 60,
+			'step'   => 1,
+			'suffix' => 'px',
+  	),
 	);
 	
 	
@@ -1886,10 +2014,29 @@ function cactus_customizer_library_options() {
 		'title' => __( 'Cactus: Pages & Posts Options', 'cactus' ),
 		'priority' => '14'
 	);
-	$section = 'section-posts-options';
+	
+	$section = 'section-title-bar';
 	$sections[] = array(
 		'id' => $section,
-		'title' => __( 'Posts Settings', 'cactus' ),
+		'title' => __( 'Title Bar', 'cactus' ),
+		'priority' => '9',
+		'panel' => $panel
+	);
+	
+	$options['display_titlebar'] = array(
+			'id' => 'display_titlebar',
+			'label'   => __( 'Display Title Bar', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			'default' => '1',
+			//'transport' => $transport,
+		);
+	
+	
+	$section = 'section-posts-archive';
+	$sections[] = array(
+		'id' => $section,
+		'title' => __( 'Posts archive', 'cactus' ),
 		'priority' => '10',
 		'panel' => $panel
 	);
@@ -1909,8 +2056,100 @@ function cactus_customizer_library_options() {
 		'default' => '1'
 	);
 	
-			
-			
+	//Display: Full Post/Excerpt
+	//Display Feature Image/Display Category/Display Author/Dispaly Date
+	$options['excerpt_style'] = array(
+		'id' => 'excerpt_style',
+		'label'   => __( 'Excerpt', 'cactus' ),
+		'section' => $section,
+		'type'    => 'radio',
+		'choices' => array(
+				'0'=> __( 'Excerpt', 'cactus' ),
+				'1'=> __( 'Full Post', 'cactus' ),
+				),
+		'default' => '0'
+	);
+	
+	$options['excerpt_display_feature_image'] = array(
+			'id' => 'excerpt_display_feature_image',
+			'label'   => __( 'Display Feature Image', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+		
+	$options['excerpt_display_category'] = array(
+			'id' => 'excerpt_display_category',
+			'label'   => __( 'Display Category', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	$options['excerpt_display_author'] = array(
+			'id' => 'display_author',
+			'label'   => __( 'Display Author', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	$options['excerpt_display_date'] = array(
+			'id' => 'display_date',
+			'label'   => __( 'Display Date', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	
+	
+	$section = 'section-posts-single';
+	$sections[] = array(
+		'id' => $section,
+		'title' => __( 'Single Post', 'cactus' ),
+		'priority' => '10',
+		'panel' => $panel
+	);
+	
+	
+	//Display Feature Image/Display Category/Display Author/Dispaly Date
+	
+	$options['display_feature_image'] = array(
+			'id' => 'display_feature_image',
+			'label'   => __( 'Display Feature Image', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+		
+	$options['display_category'] = array(
+			'id' => 'display_category',
+			'label'   => __( 'Display Category', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	$options['display_author'] = array(
+			'id' => 'display_author',
+			'label'   => __( 'Display Author', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	$options['display_date'] = array(
+			'id' => 'display_date',
+			'label'   => __( 'Display Date', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	
 	$section = 'section-sidebar-options';
 	$sections[] = array(
 		'id' => $section,
@@ -1961,6 +2200,116 @@ function cactus_customizer_library_options() {
 				'right'=> array('label'=>__( 'Right Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-right.png'),
 				),
 		);
+		
+	$options['woo_single_sidebar_layout'] = array(
+		'id' => 'woo_single_sidebar_layout',
+		'label'   => __( 'Sidebar: WooCommerce Single Product', 'cactus' ),
+		'section' => $section,
+		'type'    => 'radio-image',
+		'default' => 'no',
+		'choices' => array('no' =>__( 'No Sidebar', 'cactus' ),'left'=>__( 'Left Sidebar', 'cactus' ),'right'=>__( 'Right Sidebar', 'cactus' )),
+		'choices' => array(
+				'no'=> array('label'=>__( 'No Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-none.png'),
+				'left'=> array('label'=>__( 'Left Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-left.png'),
+				'right'=> array('label'=>__( 'Right Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-right.png'),
+				),
+		);
+		
+	$options['woo_archives_sidebar_layout'] = array(
+		'id' => 'woo_archives_sidebar_layout',
+		'label'   => __( 'Sidebar: WooCommerce Archive', 'cactus' ),
+		'section' => $section,
+		'type'    => 'radio-image',
+		'default' => 'no',
+		'choices' => array('no' =>__( 'No Sidebar', 'cactus' ),'left'=>__( 'Left Sidebar', 'cactus' ),'right'=>__( 'Right Sidebar', 'cactus' )),
+		'choices' => array(
+				'no'=> array('label'=>__( 'No Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-none.png'),
+				'left'=> array('label'=>__( 'Left Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-left.png'),
+				'right'=> array('label'=>__( 'Right Sidebar', 'cactus' ),'url'=> $imagepath.'customize/sidebar-right.png'),
+				),
+		);
+		
+		
+	
+	// General Options
+/*	$panel = 'general-options';
+	$panels[] = array(
+		'id' => $panel,
+		'title' => __( 'General Options', 'cactus' ),
+		'priority' => '12'
+	);*/
+	$section = 'cactus-general-options';
+	$sections[] = array(
+		'id' => $section,
+		'title' => __( 'Cactus: General Options', 'cactus' ),
+		'priority' => '15',
+		'panel' => ''
+	);
+	
+	$options['scheme'] = array(
+			'id' => 'scheme',
+			'label'   => __( 'Scheme', 'cactus' ),
+			'section' => $section,
+			'type'    => 'radio',
+			//'transport' => 'postMessage', 
+			'default' => 'light',
+			'choices' => array(
+				'light'    => __( 'Light', 'cactus' ),
+				'dark'    => __( 'Dark', 'cactus' ),
+  			),
+			
+		);
+	
+	$options['page_preloader'] = array(
+			'id' => 'page_preloader',
+			'label'   => __( 'Display Page Pre-loader', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			//'transport' => 'postMessage', 
+			'default' => '',
+		);
+		
+	$options['preloader_background'] = array(
+			'id' => 'preloader_background',
+			'label'   => __( 'Pre-loader Background Color', 'cactus' ),
+			'section' => $section,
+			'type'    => 'color',
+			//'transport' => 'postMessage', 
+			'default' => '#999999',
+		);
+	
+	$options['preloader_opacity'] = array(
+		'id' => 'preloader_opacity',
+		'label'   => __( 'Pre-loader Background Opacity', 'cactus' ),
+		'section' => $section,
+		'type'    => 'range-value',
+		'default' => '0.8',
+		'input_attrs' => array(
+			'min'    => 0,
+			'max'    => 1,
+			'step'   => 0.1,
+			'suffix' => '',
+  	),
+	);
+	
+	$options['preloader_image'] = array(
+			'id' => 'preloader_image',
+			'label'   => __( 'Pre-loader Image', 'cactus' ),
+			'section' => $section,
+			'type'    => 'image',
+			'transport' => 'postMessage', 
+			'default' =>  $imagepath.'preloader.gif',
+		);
+		
+	$options['display_scroll_to_top'] = array(
+			'id' => 'display_scroll_to_top',
+			'label'   => __( 'Enable Scroll to Top Button', 'cactus' ),
+			'section' => $section,
+			'type'    => 'checkbox',
+			'transport' => 'postMessage', 
+			'default' => '1',
+		);
+	
 		
 	$options['homepage_animation'] = array(
 			'id' => 'homepage_animation',

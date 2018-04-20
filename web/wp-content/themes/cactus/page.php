@@ -17,7 +17,7 @@
 ?>
 <?php echo apply_filters('cactus_page_title_bar','','page');?>  
 <div class="page-wrap">
-<?php do_action('cactus_before_page_wrap');?>  
+<?php do_action('cactus_before_page_wrap');?>
   <div class="container">
     <div class="page-inner row <?php echo $aside_class; ?>">
       <div class="col-main">
@@ -40,17 +40,18 @@
 			?>
            <?php do_action('cactus_after_page_content');?>         
           </article>
+          <?php
+		  global $post;
+		  if ( comments_open($post->ID) ) :?>
           <div class="post-attributes">
          <!--Comments Area-->
             <div class="comments-area text-left">
               <?php
-			  // If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
 						comments_template();
-					endif;
 			  ?>
             </div>            
           </div>
+          <?php endif;?>
         </section>
       </div>
       <?php cactus_get_sidebar($page_sidebar_layout,'page');?>

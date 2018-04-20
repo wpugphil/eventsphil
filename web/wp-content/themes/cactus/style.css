@@ -1,8 +1,8 @@
 /*
 Theme Name: Cactus
 Author: VelaThemes
-Description: Cactus is a modern and elegant WordPress theme which can be used to build both one-page and multi-page sites. With 10+ prebuilt sections, it is ideal for any type of site like design agency, corporate, restaurant, personal, showcase, magazine, portfolio, ecommerce, etc. Not only for the sections in front page, Cactus also offers various options for header, footer, pages & posts, etc. And the theme is compatible with Elementor Page Builder, WooCommerce, Polylang.
-Version: 1.2.0
+Description: Cactus is a modern and elegant WordPress theme which can be used to build both one-page and multi-page sites. With 10+ prebuilt sections, it is ideal for any type of site like design agency, corporate, restaurant, personal, showcase, magazine, portfolio, ecommerce, etc. Not only for the sections in front page, Cactus also offers various options for header, footer, pages & posts, etc. And the theme is compatible with Elementor Page Builder, WooCommerce, Polylang. With Elementor Page Builder, you could easily import various demo pages by just one click.
+Version: 1.2.8
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: cactus
@@ -599,7 +599,6 @@ body {
 
 .main-header {
 	background-color: #fff;/*optional*/
-	background-image:;/*optional*/
 	color: #555; /*optional*/
 	width: 100%;
 }
@@ -681,7 +680,6 @@ body {
 
 .main-header.style2 .main-header-bottom {
     border-top: 1px solid #ccc;
-    background-color: ;
 }
 
 .logo-box .pull-left + .pull-left {
@@ -802,7 +800,7 @@ header a:hover {
 }
 
 @media screen and (min-width: 920px) {
-	.cactus-navigation ul > li.menu-item-has-children > a:after,
+	.cactus-navigation > ul > li.menu-item-has-children > a:after,
 	.site-nav > div > ul > li.menu-item-has-children > a:after {
 		content: "\f107";
 		font-family: 'FontAwesome', sans-serif;
@@ -813,7 +811,6 @@ header a:hover {
 		display: none;
 	}
 }
-
 
 /*For onepage*/
 .site-nav  > div > ul > li.current > a {
@@ -1175,6 +1172,10 @@ h1.page-title {
 	padding-bottom:20px;
 }
 
+.page-template-template-fullwidth .entry-main {
+	padding: 0;
+}
+
 .entry-main:before,
 .entry-main:after {
     display:table;
@@ -1526,6 +1527,33 @@ input[type="color"]:focus,
     box-shadow: none;
 }
 
+input[type="submit"] {
+	font-size: 12px;
+	text-transform: uppercase;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	cursor: pointer;
+	color: #fff;
+	background-color: #bc2944;
+	line-height: 1;
+	padding: 10px 20px;
+	border-radius: 100px;
+	border-width: 0;
+	border-style: solid;
+}
+
+.wpcf7 input[type="submit"] {
+	padding: 20px 30px;
+}
+
+.wpcf7 label,
+.wpcf7-form-control-wrap > *  {
+    width: 100%;
+}
+
 /*
  * 5.4 Blog List Style
  */
@@ -1869,7 +1897,7 @@ a .entry-title:hover {
 .search-form input[type="text"] {
 	border: none;
 	float: left;
-	width: 100%;
+	width: 220px;
 	margin-right: -25px;
 	padding-right: 25px;
 	background-color: transparent;
@@ -2630,6 +2658,7 @@ body:not(.touch-device) .mp-carousel .owl-next:hover:before {
     top: 10px;
     border-radius: 100px;
     border: 3px solid #333;
+	z-index: 8;
 }
 
 .woocommerce ul.products li.product .onsale {
@@ -2672,6 +2701,9 @@ body:not(.touch-device) .mp-carousel .owl-next:hover:before {
 .woocommerce input.button {
     padding: 12px 20px;
     border-radius: 100px;
+	background-color: #ccc;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
 .woocommerce #respond input#submit.alt,
@@ -2686,6 +2718,34 @@ body:not(.touch-device) .mp-carousel .owl-next:hover:before {
 .woocommerce button.button.alt:hover,
 .woocommerce input.button.alt:hover {
 	background-color: #BC2944;
+}
+
+.woocommerce #respond input#submit.alt.disabled,
+.woocommerce #respond input#submit.alt.disabled:hover,
+.woocommerce #respond input#submit.alt:disabled,
+.woocommerce #respond input#submit.alt:disabled:hover,
+.woocommerce #respond input#submit.alt:disabled[disabled],
+.woocommerce #respond input#submit.alt:disabled[disabled]:hover,
+.woocommerce a.button.alt.disabled,
+.woocommerce a.button.alt.disabled:hover,
+.woocommerce a.button.alt:disabled,
+.woocommerce a.button.alt:disabled:hover,
+.woocommerce a.button.alt:disabled[disabled],
+.woocommerce a.button.alt:disabled[disabled]:hover,
+.woocommerce button.button.alt.disabled,
+.woocommerce button.button.alt.disabled:hover,
+.woocommerce button.button.alt:disabled,
+.woocommerce button.button.alt:disabled:hover,
+.woocommerce button.button.alt:disabled[disabled],
+.woocommerce button.button.alt:disabled[disabled]:hover,
+.woocommerce input.button.alt.disabled,
+.woocommerce input.button.alt.disabled:hover,
+.woocommerce input.button.alt:disabled,
+.woocommerce input.button.alt:disabled:hover,
+.woocommerce input.button.alt:disabled[disabled],
+.woocommerce input.button.alt:disabled[disabled]:hover {
+    background-color: #BC2944;
+    padding: 12px 20px;
 }
 
 .woocommerce div.product form.cart {
@@ -2839,13 +2899,17 @@ div.product form.cart {
     line-height: 40px;
 }
 
-.woocommerce-product-search input[type="submit"] {
+.woocommerce-product-search input[type="submit"],
+.woocommerce-product-search button[type="submit"] {
     border: 0;
     background-color: #ccc;
     color: #333;
     font-weight: 700;
     padding: 10px 20px;
+	border-radius: 100px;
     float: right;
+    text-transform: uppercase;
+    font-size: 12px;
 }
 
 .woocommerce-product-search .search-field {
@@ -2855,14 +2919,104 @@ div.product form.cart {
 }
 
 .woocommerce-product-search {
-    border: 1px solid #ccc;
     overflow: hidden;
     border-radius: 5px;
     width: 100%;
 }
 
-.customize-partial-refreshing{
-	opacity: 1;
+.woocommerce-product-search .search-field {
+	border: 1px solid #ccc;
+	background-color: transparent;
+	padding: 8px 15px;
+}
+
+.woocommerce.widget_price_filter {
+    padding-top: 4px;
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-range,
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+    background-color: #555;
+}
+
+.woocommerce .widget_price_filter .ui-slider .ui-slider-handle {
+    border-radius: 0;
+    width: 4px;
+    margin-left: -2px;
+    top: -.4em;
+}
+
+.woocommerce .widget_price_filter .ui-slider-horizontal {
+    height: 4px;
+}
+
+.woocommerce .widget_price_filter .price_slider_wrapper .ui-widget-content {
+    background-color: #aaa;
+}
+
+.woocommerce .widget_price_filter .price_slider_amount .button {
+    font-size: 1em;
+}
+
+.product_list_widget .product-title {
+    color: #555;
+}
+
+.product_list_widget .star-rating {
+    font-size: .8em;
+}
+
+.woocommerce ul.cart_list li img, .woocommerce ul.product_list_widget li img {
+    float:left;
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+}
+
+.product_list_widget .woocommerce-Price-amount {
+    font-size: .7em;
+    color: #333;
+}
+
+.product_list_widget del,
+.product_list_widget del .woocommerce-Price-amount {
+    color: #aaa;
+}
+
+.product_list_widget ins {
+    background: transparent;
+}
+
+.woocommerce .widget_shopping_cart .cart_list li a.remove, .woocommerce.widget_shopping_cart .cart_list li a.remove {
+    left: auto;
+    right: 0;
+}
+
+.woocommerce .widget_shopping_cart .cart_list li, .woocommerce.widget_shopping_cart .cart_list li {
+    padding-left: 0;
+    padding-right: .2em;
+}
+
+.woocommerce ul.cart_list li a, .woocommerce ul.product_list_widget li a {
+    color: #555;
+}
+
+.woocommerce .widget_shopping_cart .total, .woocommerce.widget_shopping_cart .total {
+    padding-top: 10px;
+    margin-bottom: 14px;
+}
+
+.woocommerce-mini-cart__buttons {
+    margin-bottom: 0;
+}
+
+.woocommerce a.remove {
+    color: #BC2944!important;
+}
+
+.woocommerce a.remove:hover {
+    color: #fff!important;
+    background: #BC2944;
 }
 
 /*Header*/
@@ -3071,7 +3225,7 @@ div.product form.cart {
 .cactus-contact-email:before,
 .cactus-contact-phone:before,
 .cactus-contact-clock:before,
-.cactus-shopping-cart:before,
+.cactus-shopping-cart-label:before,
 .cactus-search-label:before,
 .cactus-menu-label:before {
     display: inline-block;
@@ -3121,6 +3275,25 @@ div.product form.cart {
     top: 100%;
 }
 
+.cactus-shopping-cart {
+	position: relative;
+}
+
+.cactus-shopping-cart-wrap {
+	top: 18px;
+	padding-top: 25px;
+}
+
+.cactus-shopping-cart-wrap {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.cactus-shopping-cart:hover .cactus-shopping-cart-wrap {
+    visibility: visible;
+    opacity:1;
+}
+
 .cactus-shopping-cart-wrap.right-overflow,
 .cactus-search-wrap.right-overflow {
     right: 0;
@@ -3135,6 +3308,23 @@ div.product form.cart {
     box-sizing: border-box;
     -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
     box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+}
+
+.cactus-shopping-cart .woocommerce ul.cart_list li, .woocommerce ul.product_list_widget li {
+    margin: 10px 0;
+}
+
+.cactus-shopping-cart .woocommerce a.button {
+    padding: 12px 20px;
+}
+
+.cactus-shopping-cart .woocommerce.widget_shopping_cart .total {
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+.cactus-shopping-cart .woocommerce-mini-cart__buttons {
+    margin-bottom: 0;
 }
 
 .cactus-header .searchform {
@@ -3182,7 +3372,7 @@ div.product form.cart {
     color: transparent;
 }
 
-.cactus-shopping-cart:before {
+.cactus-shopping-cart-label:before {
     content: "\f07a";
     cursor: pointer;
 }
@@ -3496,6 +3686,19 @@ div.product form.cart {
     padding:  0 0 0 40px;
 }
 
+.cactus-inline-header .cactus-navigation > .cactus-f-microwidgets {
+    padding:  0 0 0 40px;
+}
+
+.cactus-split-header .cactus-navigation > .cactus-f-microwidgets {
+    padding-right: 30px;
+}
+
+.cactus-split-header .cactus-navigation + .cactus-navigation > .cactus-f-microwidgets {
+    padding-left: 30px;
+    padding-right: 0;
+}
+
 .cactus-classic-header.justify .cactus-main-nav {
     -webkit-flex-grow: 10;
     -moz-flex-grow: 10;
@@ -3633,6 +3836,15 @@ div.product form.cart {
     -ms-flex-positive: 1;
     -ms-flex-grow: 1;
     flex-grow: 1;
+	display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -ms-flex;
+    display: flex;
+    -webkit-flex-flow: row nowrap;
+    -moz-flex-flow: row nowrap;
+    -ms-flex-flow: row nowrap;
+    flex-flow: row nowrap;
 }
 
 .cactus-header.justify .cactus-main-nav {
@@ -4694,7 +4906,8 @@ body.cactus-header-side-right {
     right: 0;
 }
 
-.cactus-header .sub-menu {
+.cactus-header .sub-menu,
+.cactus-header .cactus-mega-menu-wrap {
     box-sizing: border-box;
     background-color: #fff;
     margin: 0!important;
@@ -4777,7 +4990,60 @@ body.cactus-header-side-right {
 }
 
 .cactus-header .sub-menu .sub-menu.right-overflow {
-  left: -241px;
+	left: -241px;
+}
+
+.cactus-header .cactus-mega-menu-wrap {
+	width: 100%;
+	padding: 10px;
+}
+
+.cactus-header .cactus-main-nav li.cactus-mega-menu {
+    position: static;
+}
+
+.cactus-mega-menu-wrap > .sub-menu {
+    position: relative;
+    visibility: visible;
+    width: auto;
+    padding: 0;
+    opacity: 1;
+    background: none;
+    box-shadow: none;
+}
+
+.cactus-mega-menu-wrap > .sub-menu > li {
+	position: static;
+    display: -webkit-inline-flex;
+    display: -moz-inline-flex;
+    display: -ms-inline-flexbox;
+    display: -ms-inline-flex;
+    display: inline-flex;
+    -webkit-flex-flow: column wrap;
+    -moz-flex-flow: column wrap;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
+    padding: 0 10px 10px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 25%;
+    font-weight: 700;
+}
+
+.cactus-header .sub-menu .sub-menu {
+	position: relative;
+    left: auto !important;
+    top: auto;
+    max-width: 100%;
+    padding: 0;
+    background: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    font-size: .9em;
+    font-weight: 400;
 }
 
 /*Sub nav for sideheader*/
@@ -5096,8 +5362,12 @@ body.cactus-header-side-right {
     justify-content: center;
     margin: 0 20px;
     padding: 10px 0px 10px 0px;
-}
 
+}
+.cactus-mobile-main-nav .sub-menu a{
+	display:inline !important;
+	
+	}
 .floating-toggle .cactus-toggle-icon {
     position: fixed;
     top: 10px;
@@ -5342,8 +5612,9 @@ body.cactus-header-side-right {
 		background-color: rgba(255,255,255,0);
 	}
 
-	.cactus-header.transparent.text-light,
-	.cactus-header.transparent.text-light a {
+	.cactus-header.transparent.text-light .cactus-main-nav > li > a,
+	.cactus-header.transparent.text-light .cactus-search-label,
+	.cactus-header.transparent.text-light .cactus-shopping-cart-label {
 		color: #fff;
 	}
 
@@ -5393,6 +5664,7 @@ body.cactus-header-side-right {
 
 .cactus-search-wrap .search-form {
     background-color: #fff;
+	color: #333;
 }
 
 .cactus-mobile-drawer-header {
@@ -5464,4 +5736,85 @@ body.cactus-header-side-right {
 
 .cactus-triangle-down:after {
     right: -1em;
+}
+
+/*Dark Skin*/
+body.dark {
+    background-color: #222;
+}
+
+body.dark:not(.home) {
+    color: #fff;
+}
+
+body.dark:not(.home) h1,
+body.dark:not(.home) h2,
+body.dark:not(.home) h3,
+body.dark:not(.home) h4,
+body.dark:not(.home) h5,
+body.dark:not(.home) h6 {
+    color: #fff;
+}
+
+body.dark .cactus-header {
+    background-color: #111;
+}
+
+body.dark .cactus-header .cactus-main-nav > li > a {
+    color: #fff;
+}
+
+body.dark .site-name, .site-tagline {
+    color: #fff!important;
+}
+
+body.dark .page-wrap {
+    background-color: #222;
+}
+
+body.dark .blog-list-wrap .entry-box {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark a .entry-title,
+body.dark a .entry-title:hover {
+    color: #fff;
+}
+
+body.dark footer.site-footer {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark .back-to-top {
+    background-color: #111;
+}
+
+body.dark .cactus-box-content,
+body.dark .cactus-box-content h2 {
+    background-color: #222;
+    color: #fff;
+}
+
+body.dark .cactus-search-wrap .search-form {
+    background-color: #333;
+}
+
+body.dark .cactus-shopping-cart-inner {
+    background-color: #333;
+}
+
+.page-loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url(assets/images/preloader.gif) center no-repeat #fff;
+}
+
+.customize-partial-refreshing {
+	opacity: 1;
 }

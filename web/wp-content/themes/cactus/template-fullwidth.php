@@ -26,17 +26,17 @@
 			?>
             <?php do_action('cactus_after_page_content');?>               
           </article>
+           <?php if ( comments_open() || get_comments_number()) :?>
           <div class="post-attributes">
          <!--Comments Area-->
             <div class="comments-area text-left">
               <?php
-			  // If comments are open or we have at least one comment, load up the comment template.
-					if ( comments_open() || get_comments_number() ) :
+
 						comments_template();
-					endif;
 			  ?>
             </div>            
           </div>
+          <?php endif;?>
         </section>
       </div>
     </div>

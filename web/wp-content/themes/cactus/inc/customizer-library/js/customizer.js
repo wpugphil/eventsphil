@@ -292,7 +292,10 @@
 			} );
 	} );
 	
-	
+	$(document).on('click','.customize-partial-edit-shortcut-frontpage_menu_selective',function(){
+		wp.customize.preview.send( 'focus-control-for-setting', 'cactus[frontpage_menu]' );
+		});
+		
 	wp.customize( 'cactus[text_align_banner]', function( value ) {
 		value.bind( function( to ) {
 				$( '.cactus-section-banner .cactus-container' ).css({'text-align':to});

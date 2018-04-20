@@ -1,4 +1,4 @@
-<div id="post-<?php the_ID(); ?>" <?php post_class('entry-box-wrap'); ?>>
+<div id="page-<?php the_ID(); ?>">
   <article class="entry-box">
     <div class="entry-main">
       <div class="entry-summary">

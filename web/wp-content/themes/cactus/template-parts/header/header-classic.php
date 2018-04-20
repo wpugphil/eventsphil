@@ -25,6 +25,7 @@
 ?>
 <div class="<?php echo $class; ?>">
             <?php get_template_part( 'template-parts/header/header', 'top-bar' ); ?>
+            
             <div class="cactus-main-header">
                 <div class="cactus-logo">
                    <?php get_template_part( 'template-parts/header/header', 'logo' ); ?>
@@ -54,7 +55,7 @@
             <div class="<?php echo $sticky_class; ?>">
                 <div class="cactus-main-header">
                     <div class="cactus-logo">
-               		<?php get_template_part( 'template-parts/header/header', 'logo' ); ?>
+               		<?php get_template_part( 'template-parts/header/header', 'stickylogo' ); ?>
                     </div>
                     
  <?php get_template_part( 'template-parts/navigation/navigation', 'top' ); ?>

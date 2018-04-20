@@ -1,6 +1,6 @@
 <?php
 
-define('CACTUS_VERSION','1.1.10');
+define('CACTUS_VERSION','1.2.0');
 define('CACTUS_TEXTDOMAIN','cactus');
 
 if( !function_exists('is_plugin_active') ) {
@@ -15,12 +15,12 @@ require_once($template_directory . '/inc/customizer-library/customizer-library.p
 require_once($template_directory . '/inc/customizer-options.php');
 require_once($template_directory . '/inc/class-video.php');
 require_once($template_directory . '/inc/demo-preview-images/init-prevdem.php');
-require_once($template_directory . 'inc/customizer-library/custom-controls/editor/editor-page.php');
-
+require_once($template_directory . '/inc/customizer-library/custom-controls/editor/editor-page.php');
+require_once ($template_directory . '/inc/wp-menu-item-custom-fields/Menu.php');
 
 function cactus_setup() {
-	
-	load_theme_textdomain( CACTUS_TEXTDOMAIN );
+
+	load_theme_textdomain( 'cactus', get_template_directory() . '/languages' );
 
 	add_theme_support( 'automatic-feed-links' );
 
@@ -55,9 +55,9 @@ function cactus_setup() {
 
 	// Add theme support for Custom Logo.
 	add_theme_support( 'custom-logo', array(
-		'width'       => 152,
-		'height'      => 50,
+		'height'      => 100,
 		'flex-width'  => true,
+		'flex-height' => true,
 	) );
 	
 	// Setup the WordPress core custom header feature.
@@ -121,10 +121,9 @@ function cactus_scripts() {
 	
 	$cactus_options = get_option(CACTUS_TEXTDOMAIN);
 	
-	
 	$headings_font_family = esc_attr(cactus_option( 'headings_font_family'));
 	$body_font_family     = esc_attr(cactus_option( 'body_font_family'));
-	
+	$page_preloader       = absint(cactus_option( 'page_preloader'));
 	$fonts[] = $headings_font_family;
 	$fonts[] = $body_font_family;
 	
@@ -180,9 +179,35 @@ function cactus_scripts() {
 	
 	wp_enqueue_script( 'jquery-parallax', get_template_directory_uri() . '/assets/plugins/parallax/jquery.parallax-1.1.3.js' , array( 'jquery' ), null, true);
 	wp_enqueue_script( 'jquery-prettyphoto', get_template_directory_uri() . '/assets/plugins/prettyphoto/js/jquery.prettyPhoto.min.js' , array( 'jquery' ), null, true);
-
+	
+	if( $page_preloader == '1' ||  is_customize_preview() )
+		wp_enqueue_script( 'loadingoverlay', get_template_directory_uri() . '/assets/plugins/jquery-loading-overlay/loadingoverlay.js' , array( 'jquery' ), null, true);
+	
+	
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
+	}
+	
+	if(cactus_option('slider_autoplay_banner')=='1')
+		$slider_autoplay = true;
+	else
+		$slider_autoplay = false;
+		
+	$autoplaytimeout = cactus_option('autoplaytimeout_banner');
+	$autoplaytimeout = absint($autoplaytimeout);
+	
+	$preloader_background = esc_attr(cactus_option('preloader_background'));
+	$preloader_opacity = esc_attr(cactus_option('preloader_opacity'));
+	$preloader_image = esc_attr(cactus_option('preloader_image'));
+	if (is_numeric($preloader_image)) {
+		$image_attributes = wp_get_attachment_image_src($preloader_image, 'full');
+		$preloader_image   = $image_attributes[0];
+	}
+	
+	$preloader_bg = '';
+	if($preloader_background!=''){
+		$rgb = cactus_hex2rgb( $preloader_background );
+		$preloader_bg = "rgba(".$rgb[0].",".$rgb[1].",".$rgb[2].",".$preloader_opacity.")";
 	}
 	
 	wp_enqueue_script( 'cactus-main', get_template_directory_uri() . '/assets/js/cactus.js' , array( 'jquery' ), null, true);
@@ -192,7 +217,12 @@ function cactus_scripts() {
 		'mixitup' => $mixitup,
 		'isotope' => $isotope,
 		'video_background' => $video_background,
-		'banner_video' => $banner_video
+		'banner_video' => $banner_video,
+		'slider_autoplay' => $slider_autoplay,
+		'autoplaytimeout' => $autoplaytimeout,
+		'page_preloader' => $page_preloader,
+		'preloader_background' => $preloader_bg,
+		'preloader_image' => $preloader_image,
 	)  );
 	
 	$custom_css = '';
@@ -286,9 +316,14 @@ add_action( 'wp_enqueue_scripts', 'cactus_scripts' );
 function cactus_admin_scripts(){
 	global $pagenow;
 	wp_enqueue_script( 'cactus-admin', get_template_directory_uri().'/assets/js/admin.js', array( 'jquery' ), '', true );
-	if( $pagenow == "themes.php" && isset($_GET['page']) && $_GET['page'] == "cactus-welcome" ):
+	if( ($pagenow == "themes.php" && isset($_GET['page']) && $_GET['page'] == "cactus-welcome") || $pagenow == 'nav-menus.php' ):
 		wp_enqueue_style( 'cactus-admin', get_template_directory_uri() . '/assets/css/admin.css', '', '', false );
 	endif;
+	
+	wp_localize_script( 'cactus-admin', 'cactus_admin', array(
+			'ajaxurl' => admin_url('admin-ajax.php'),
+		)  );
+		
 	}
 add_action( 'admin_enqueue_scripts', 'cactus_admin_scripts' );
 
@@ -440,7 +475,27 @@ function cactus_widgets_init() {
 		'after_title'   => '</h2>',
 	) );
 	
-
+	
+	register_sidebar( array(
+		'name'          => __( 'WooCommerce Single Product', 'cactus' ),
+		'id'            => 'sidebar-woo-single',
+		'description'   => __( 'Add widgets here to appear in your products sidebar.', 'cactus' ),
+		'before_widget' => '<section id="%1$s" class="widget-box %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	
+	register_sidebar( array(
+		'name'          => __( 'WooCommerce Archives', 'cactus' ),
+		'id'            => 'sidebar-woo-archives',
+		'description'   => __( 'Add widgets here to appear in your products list sidebar.', 'cactus' ),
+		'before_widget' => '<section id="%1$s" class="widget-box %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<h2 class="widget-title">',
+		'after_title'   => '</h2>',
+	) );
+	
 	register_sidebar( array(
 		'name'          => __( 'Footer 1', 'cactus' ),
 		'id'            => 'footer-1',
@@ -866,16 +921,13 @@ function cactus_register_partials( WP_Customize_Manager $wp_customize ) {
 		if ( empty( $cactus_customizer_options ) ) {
 			return;
 		}
-
+	
+	/*$wp_customize->selective_refresh->add_partial( 'frontpage_menu_selective', array(
+		'selector' => '.frontpage_menu_selective ul.cactus-main-nav',
+		'settings' => array( 'cactus[frontpage_menu]' ),
+		'render_callback' => 'cactus_frontpage_menu',
+	) );*/
 	// Loops through each of the options
-/*	foreach ( $cactus_customizer_options as $option ) {
-			if(isset($option['type']) && ($option['type'] == 'text' || $option['type'] == 'textarea' || $option['type'] == 'editor' || $option['type'] == 'image' || $option['type'] == 'repeater' ) ){
-		$wp_customize->selective_refresh->add_partial( $option['id'].'_selective', array(
-        	'selector' => '.'.$option['id'].'_selective',
-        	'settings' => array( CACTUS_TEXTDOMAIN.'['.$option['id'].']' ),
-		));
-		} 
-	}*/
 	
 	foreach($sections as $key => $value){
 		
@@ -974,7 +1026,6 @@ function cactus_register_partials( WP_Customize_Manager $wp_customize ) {
 		
 	) );
 	
-
 	$wp_customize->selective_refresh->add_partial( 'copyright_selective', array(
 		'selector' => '.copyright_selective',
 		'settings' => array( 'cactus[copyright]' ),
@@ -1021,6 +1072,16 @@ function cactus_register_partials( WP_Customize_Manager $wp_customize ) {
 }
 add_action( 'customize_register', 'cactus_register_partials' );
 
+/* frontpage menu selective*/
+function cactus_frontpage_menu(){
+	
+	$cactus_options = get_option(CACTUS_TEXTDOMAIN);
+	if( isset($cactus_options['frontpage_menu']) )
+		return $cactus_options['frontpage_menu'];
+		
+	}
+	
+	
 /* section banner */
 function cactus_video_title_banner(){
 	$cactus_options = get_option(CACTUS_TEXTDOMAIN);
@@ -1411,9 +1472,6 @@ function cactus_shop_content($echo = true) {
 										?>
                                                
                                     </li>
-                
-               
-
 				<?php
 				$i++;
 			}
@@ -1506,7 +1564,9 @@ function cactus_theme_register_required_plugins() {
  */
 function cactus_welcome_notice() {
 	global $pagenow;
-	
+	if(function_exists('is_plugin_active') && is_plugin_active('cactus-companion/cactus-companion.php')){
+		return '';
+		}
 	$theme = wp_get_theme();
 	if ( is_child_theme() ) {
 		$theme_name = $theme->parent()->get( 'Name' );
@@ -1566,12 +1626,15 @@ function cactus_about_theme() {
 }
  
 function cactus_about_theme_callback() {
+	
+	$theme_info = wp_get_theme();
+	
     echo '<div class="wrap"><div id="icon-tools" class="icon32"></div>';
         echo '<h2>'.esc_attr__('About Cactus', 'cactus' ).'</h2>';
 	
 	echo '<div class="cactus-info-wrap">
-	<h1>'.esc_attr__('Thanks for choosing Cactus theme!', 'cactus' ).'</h1>
-	<p>Cactus is an easy-to-use theme which can help you create your site in minutes. In just simple steps. No code knowledge needed.</p>
+	<h1>'.sprintf(esc_attr__('Welcome to %s Version %s', 'cactus'),$theme_info->get( 'Name' ), $theme_info->get( 'Version' ) ).'</h1>
+	<p>'.$theme_info->get( 'Name' ).' is a modern and free WordPress theme which can be used to build both one-page and multi-page sites. Based on Bootstrap frontend framework, its fully responsive design looks stunning on any device. With 10+ prebuilt sections such as full width slider, services, promo, team, gallery, testimonials, counter, clients, recent posts, contact, etc., '.$theme_info->get( 'Name' ).' is perfect for any type of site like design agency, corporate, restaurant, personal, showcase, magazine, portfolio, etc. And the theme is compatible with Elementor Page Builder, WooCommerce, Polylang. Moreover, all setting options are embedded in Customize, you can change everything and check the changes in real time. Just insert text & images, no coding knowledge needed. This theme is also SEO friendly which can help you attain higher ranking on Google.</p>
 	
 	<div class="cactus-message blue">
 	'.esc_attr__('Now you can just go to Customize to activate the companion plugin and customize everything in your site.', 'cactus' ).'
@@ -1582,6 +1645,31 @@ function cactus_about_theme_callback() {
 	'.esc_attr__('More info could be found at the manual.', 'cactus' ).'
 	<p><a class="button" target="_blank" href="'.esc_url('https://velathemes.com/cactus-documentation/').'"> '.esc_attr__('Step-by-step Manual', 'cactus' ).' </a></p>
 	</div>
+	
+	<div class="cactus-message green">
+	'.esc_attr__('If you have checked the documentation and still having an issue, please post in the support thread.', 'cactus' ).'
+	<p><a class="button" target="_blank" href="'.esc_url('https://wordpress.org/support/theme/cactus').'"> '.esc_attr__('Support Thread', 'cactus' ).' </a></p>
+	</div>
+	
+	<div class="cactus-message blue">
+	<h2>'.esc_attr__('FAQ', 'cactus').'</h2>
+	
+	<p><a class="" target="_blank" href="'.esc_url('https://velathemes.com/faq/#1').'">'.esc_attr__('How to Create Child Theme?', 'cactus' ).'</a></p>
+	<p><a class="" target="_blank" href="'.esc_url('https://velathemes.com/faq/#2').'">'.esc_attr__('How to Add Custom CSS to Your Website?', 'cactus' ).'</a></p>
+	<p><a class="" target="_blank" href="'.esc_url('https://velathemes.com/faq/#3').'">'.esc_attr__('How to Translate the Theme?', 'cactus' ).'</a></p>
+	<p><a class="" target="_blank" href="'.esc_url('https://velathemes.com/faq/#4').'">'.esc_attr__('How to Make Your Site Multilingual?', 'cactus' ).'</a></p>
+	<p><a class="" target="_blank" href="'.esc_url('https://velathemes.com/faq/#5').'">'.esc_attr__('How to Increase Memory Limit?', 'cactus' ).'</a></p>
+
+	</div>
+	
+	
+	<div class="cactus-message blue">
+	<h2>'.esc_attr__('Review Cactus on WordPress', 'cactus').'</h2>
+	
+	<p>We are grateful that you have chose our theme. If you like Cactus, please take 1 minitue to post your review on Wordpress. Few words of appreciation also motivates the development team.</p>
+	<p><a class="button" target="_blank" href="'.esc_url('https://wordpress.org/support/theme/cactus/reviews/#new-post').'"> '.esc_attr__('Post Your Review', 'cactus' ).' </a></p>
+	</div>
+	
 	
 	</div>';
 		
@@ -1614,6 +1702,11 @@ add_action('wp_footer','cactus_footer_script');
  *
  */
 function cactus_page_title_bar(  $content, $type='page'){
+	
+	$display_titlebar = cactus_option('display_titlebar');
+	if($display_titlebar==''||$display_titlebar==0)
+		return '';
+	
     $title_bar_layout = cactus_option('title_bar_layout');
 	$title_bar_layout = apply_filters('cactus_title_bar_layout',$title_bar_layout);
 	$class = 'page-title-bar '.$title_bar_layout;
@@ -1648,6 +1741,7 @@ add_filter( 'cactus_page_title_bar', 'cactus_page_title_bar', 10, 2 );
  */
 function cuctus_get_separator($type = 'cloud', $color = '#fff', $height = '100' ){
 	
+	$height = str_replace('px','',$height);
 	$class = "cactus-section-separator";
 	
 	if($type == 'triangle-up')
@@ -1730,3 +1824,405 @@ function cuctus_get_separator($type = 'cloud', $color = '#fff', $height = '100' 
 		$html .= '</div>';
 		return $html;
 	}
+
+/*
+*  Allow tags
+*/
+add_action('init', 'cactus_html_tags_code', 10);
+function cactus_html_tags_code() {
+	
+	global $allowedposttags;
+
+    $allowed_atts = array(
+		'align'      => array(),
+		'class'      => array(),
+		'type'       => array(),
+		'id'         => array(),
+		'dir'        => array(),
+		'lang'       => array(),
+		'style'      => array(),
+		'xml:lang'   => array(),
+		'src'        => array(),
+		'alt'        => array(),
+		'href'       => array(),
+		'rel'        => array(),
+		'rev'        => array(),
+		'target'     => array(),
+		'novalidate' => array(),
+		'type'       => array(),
+		'value'      => array(),
+		'name'       => array(),
+		'tabindex'   => array(),
+		'action'     => array(),
+		'method'     => array(),
+		'for'        => array(),
+		'width'      => array(),
+		'height'     => array(),
+		'data'       => array(),
+		'title'      => array(),
+	);
+	$allowedposttags['form']     = $allowed_atts;
+    $allowedposttags["script"] = array("src" => array(),"name" => array(),"id" => array(),"type" => array());
+	$allowedposttags['iframe'] = array (
+		'align'       => true,
+		'frameborder' => true,
+		'height'      => true,
+		'width'       => true,
+		'sandbox'     => true,
+		'seamless'    => true,
+		'scrolling'   => true,
+		'srcdoc'      => true,
+		'src'         => true,
+		'class'       => true,
+		'id'          => true,
+		'style'       => true,
+		'border'      => true,
+	);
+	
+	$allowedposttags["object"] = array("height" => array(), "width" => array());
+	$allowedposttags["param"] = array("name" => array(), "value" => array());
+	
+	$allowedposttags["embed"] = array(
+		"src" => array(),
+		"type" => array(),
+		"allowfullscreen" => array(),
+		"allowscriptaccess" => array(),
+		"height" => array(),
+		"width" => array()
+		);
+    $allowedposttags["style"] = array("type" => array());
+	$allowedposttags["link"] = array("rel" => array(),"href" => array(),"id" => array(),"type" => array(),"media" => array());
+	$allowedposttags["input"] = array("name" => array(),"id" => array(),"value" => array(),"class" => array(),"placeholder" => array(),"required" => array(),"type" => array(),'aria-required' => array());
+	$allowedposttags["select"] = array("name" => array(),"id" => array(),"value" => array(),"class" => array(),"required" => array(),"type" => array(),'aria-required' => array());
+	$allowedposttags["textarea"] = array("name" => array(),"id" => array(),"value" => array(),"class" => array(),"placeholder" => array(),"required" => array(),"type" => array(),'aria-required' => array());
+}
+
+/**
+ * Convert Hex Code to RGB
+ * @param  string $hex Color Hex Code
+ * @return array       RGB values
+ */
+ 
+function cactus_hex2rgb( $hex ) {
+	if ( strpos( $hex,'rgb' ) !== FALSE ) {
+
+		$rgb_part = strstr( $hex, '(' );
+		$rgb_part = trim($rgb_part, '(' );
+		$rgb_part = rtrim($rgb_part, ')' );
+		$rgb_part = explode( ',', $rgb_part );
+
+		$rgb = array($rgb_part[0], $rgb_part[1], $rgb_part[2], $rgb_part[3]);
+
+	} elseif( $hex == 'transparent' ) {
+		$rgb = array( '255', '255', '255', '0' );
+	} else {
+
+		$hex = str_replace( '#', '', $hex );
+		
+		
+		if( strlen( $hex ) == 3 ) {
+			$r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+			$g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+			$b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+		} else {
+			$r = hexdec( substr( $hex, 0, 2 ) );
+			$g = hexdec( substr( $hex, 2, 2 ) );
+			$b = hexdec( substr( $hex, 4, 2 ) );
+		}
+		$rgb = array( $r, $g, $b );
+	}
+
+	return $rgb;
+}
+
+
+/**
+ * Mini cart
+ */
+ 
+function cactus_wcmenucart() {
+
+	// Check if WooCommerce is active
+	if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) )  )
+		return '';
+
+	ob_start();
+		global $woocommerce;
+		$viewing_cart = __('View your shopping cart', 'cactus');
+		$start_shopping = __('Start shopping', 'cactus');
+		$cart_url = wc_get_cart_url();
+		$shop_page_url = get_permalink( wc_get_page_id( 'shop' ) );
+		$cart_contents_count = $woocommerce->cart->cart_contents_count;
+		$cart_contents = sprintf(_n('%d item', '%d items', $cart_contents_count, 'cactus'), $cart_contents_count);
+		$cart_total = $woocommerce->cart->get_cart_total();
+		// Uncomment the line below to hide nav menu cart item when there are no items in the cart
+		// if ( $cart_contents_count > 0 ) {
+			if ($cart_contents_count == 0) {
+				$menu_item = '<li class="right"><a class="wcmenucart-contents" href="'. $shop_page_url .'" title="'. $start_shopping .'">';
+			} else {
+				$menu_item = '<li class="right"><a class="wcmenucart-contents" href="'. $cart_url .'" title="'. $viewing_cart .'">';
+			}
+
+			$menu_item .= '<i class="fa fa-shopping-cart"></i> ';
+
+			$menu_item .= $cart_contents.' - '. $cart_total;
+			$menu_item .= '</a></li>';
+		// Uncomment the line below to hide nav menu cart item when there are no items in the cart
+		// }
+		echo $menu_item;
+	$social = ob_get_clean();
+	return $social;
+
+}
+
+/**
+ * Hide header & footer
+ */
+function cactus_hide_header(){
+	if(isset($_GET['hide-header'])){
+		return 1;
+		}
+	}
+
+function cactus_hide_footer(){
+	if(isset($_GET['hide-footer'])){
+		return 1;
+		}
+	}
+add_filter('cactus_hide_header','cactus_hide_header');
+add_filter('cactus_hide_footer','cactus_hide_header');
+
+/**
+ * Menu items option
+ */
+add_action( 'init', 'cactus_setup_menu_custom_fields' );
+function cactus_setup_menu_custom_fields() {
+
+	$fields = array(
+		'_mega_menu' => array(
+			'label' => __( 'Mega Menu', 'cactus' ).' ',
+			'element' => 'select',
+	 		'sanitize_callback' => 'sanitize_text_field',
+	  		'options' => array(
+	 			'0' => __( 'No', 'cactus' ),
+	 			'1' => __( 'Yes', 'cactus' ),
+	 		),
+			),
+		);
+
+		// Menu Management custom fields.
+		new \Lucymtc\Menu( $fields );
+}
+
+
+class Cactus_Menu_Walker extends Walker_Nav_Menu {
+	
+	private $mega_menu;
+	
+	function start_lvl( &$output, $depth = 0, $args = array() ) {
+    if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+        $t = '';
+        $n = '';
+    } else {
+        $t = "\t";
+        $n = "\n";
+    }
+    $indent = str_repeat( $t, $depth );
+ 
+    // Default class.
+    $classes = array( 'sub-menu' );
+ 
+    /**
+     * Filters the CSS class(es) applied to a menu list element.
+     *
+     * @since 4.8.0
+     *
+     * @param array    $classes The CSS classes that are applied to the menu `<ul>` element.
+     * @param stdClass $args    An object of `wp_nav_menu()` arguments.
+     * @param int      $depth   Depth of menu item. Used for padding.
+     */
+    $class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
+    $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+ 	if( $this->mega_menu == '1' ){
+    	$output .= "{$n}{$indent}<div class='cactus-mega-menu-wrap'><ul$class_names>{$n}";
+	}
+	else
+		$output .= "{$n}{$indent}<ul$class_names>{$n}";
+
+}
+
+
+	function end_lvl( &$output, $depth = 0, $args = array() ) {
+    if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+        $t = '';
+        $n = '';
+    } else {
+        $t = "\t";
+        $n = "\n";
+    }
+    $indent = str_repeat( $t, $depth );
+	if( $this->mega_menu == '1' ){
+    	$output .= "$indent</ul></div>{$n}";
+		}
+	else
+		$output .= "$indent</ul>{$n}";
+	
+	$this->mega_menu = 0;
+	
+}
+
+    function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+    if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+        $t = '';
+        $n = '';
+    } else {
+        $t = "\t";
+        $n = "\n";
+    }
+    $indent = ( $depth ) ? str_repeat( $t, $depth ) : '';
+ 
+    $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+    $classes[] = 'menu-item-' . $item->ID;
+ 
+    /**
+     * Filters the arguments for a single nav menu item.
+     *
+     * @since 4.4.0
+     *
+     * @param stdClass $args  An object of wp_nav_menu() arguments.
+     * @param WP_Post  $item  Menu item data object.
+     * @param int      $depth Depth of menu item. Used for padding.
+     */
+    $args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
+ 
+    /**
+     * Filters the CSS class(es) applied to a menu item's list item element.
+     *
+     * @since 3.0.0
+     * @since 4.1.0 The `$depth` parameter was added.
+     *
+     * @param array    $classes The CSS classes that are applied to the menu item's `<li>` element.
+     * @param WP_Post  $item    The current menu item.
+     * @param stdClass $args    An object of wp_nav_menu() arguments.
+     * @param int      $depth   Depth of menu item. Used for padding.
+     */
+	 
+	 
+    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
+	
+	$mega_menu = get_post_meta($item->ID,'_mega_menu',true);
+	
+	$this->mega_menu = 0;
+	if( $mega_menu == '1' ){
+		$class_names .= ' cactus-mega-menu';
+		$this->mega_menu = 1;
+	}
+	
+    $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+ 
+    /**
+     * Filters the ID applied to a menu item's list item element.
+     *
+     * @since 3.0.1
+     * @since 4.1.0 The `$depth` parameter was added.
+     *
+     * @param string   $menu_id The ID that is applied to the menu item's `<li>` element.
+     * @param WP_Post  $item    The current menu item.
+     * @param stdClass $args    An object of wp_nav_menu() arguments.
+     * @param int      $depth   Depth of menu item. Used for padding.
+     */
+    $id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
+    $id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
+	
+ 	
+    $output .= $indent . '<li' . $id . $class_names .'>';
+ 
+    $atts = array();
+    $atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
+    $atts['target'] = ! empty( $item->target )     ? $item->target     : '';
+    $atts['rel']    = ! empty( $item->xfn )        ? $item->xfn        : '';
+    $atts['href']   = ! empty( $item->url )        ? $item->url        : '';
+ 
+    /**
+     * Filters the HTML attributes applied to a menu item's anchor element.
+     *
+     * @since 3.6.0
+     * @since 4.1.0 The `$depth` parameter was added.
+     *
+     * @param array $atts {
+     *     The HTML attributes applied to the menu item's `<a>` element, empty strings are ignored.
+     *
+     *     @type string $title  Title attribute.
+     *     @type string $target Target attribute.
+     *     @type string $rel    The rel attribute.
+     *     @type string $href   The href attribute.
+     * }
+     * @param WP_Post  $item  The current menu item.
+     * @param stdClass $args  An object of wp_nav_menu() arguments.
+     * @param int      $depth Depth of menu item. Used for padding.
+     */
+    $atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args, $depth );
+ 
+    $attributes = '';
+    foreach ( $atts as $attr => $value ) {
+        if ( ! empty( $value ) ) {
+            $value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
+            $attributes .= ' ' . $attr . '="' . $value . '"';
+        }
+    }
+ 
+    /** This filter is documented in wp-includes/post-template.php */
+    $title = apply_filters( 'the_title', $item->title, $item->ID );
+ 
+    /**
+     * Filters a menu item's title.
+     *
+     * @since 4.4.0
+     *
+     * @param string   $title The menu item's title.
+     * @param WP_Post  $item  The current menu item.
+     * @param stdClass $args  An object of wp_nav_menu() arguments.
+     * @param int      $depth Depth of menu item. Used for padding.
+     */
+    $title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+ 
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . $title . $args->link_after;
+    $item_output .= '</a>';
+    $item_output .= $args->after;
+ 
+    /**
+     * Filters a menu item's starting output.
+     *
+     * The menu item's starting output only includes `$args->before`, the opening `<a>`,
+     * the menu item's title, the closing `</a>`, and `$args->after`. Currently, there is
+     * no filter for modifying the opening and closing `<li>` for a menu item.
+     *
+     * @since 3.0.0
+     *
+     * @param string   $item_output The menu item's starting HTML output.
+     * @param WP_Post  $item        Menu item data object.
+     * @param int      $depth       Depth of menu item. Used for padding.
+     * @param stdClass $args        An object of wp_nav_menu() arguments.
+     */
+    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	
+}
+
+function end_el( &$output, $item, $depth = 0, $args = array() ) {
+    if ( isset( $args->item_spacing ) && 'discard' === $args->item_spacing ) {
+        $t = '';
+        $n = '';
+    } else {
+        $t = "\t";
+        $n = "\n";
+    }
+	
+    $output .= "</li>{$n}";
+	
+	
+	
+}
+
+}

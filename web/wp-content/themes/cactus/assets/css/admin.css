@@ -15,6 +15,9 @@
     border-left-color: #00a0d2;
 }
 
+.cactus-info-wrap .cactus-message.green {
+    border-left-color: #5fba7d;
+}
 .cactus-info-wrap .cactus-message {
     background: #fff;
     border-left: 4px solid #fff;
@@ -23,4 +26,11 @@
     padding: 10px 10px;
     margin: 15px 0 15px;
     border-left-color: #ffb900;
+}
+
+.cactus_menu_custom_fields{
+	display:none;
+}
+.menu-item-depth-0 .cactus_menu_custom_fields{
+	display:block;
 }

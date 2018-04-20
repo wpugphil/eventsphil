@@ -1,0 +1,1611 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Cactus\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-04-19 08:45+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: shijun quan <support@velathemes.com>\n"
+"Language-Team: VelaThemes\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.0.2\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: archive.php:64 page.php:34 search.php:52 single.php:34
+#: template-fullwidth.php:20 template-parts/post/content-search.php:44
+#: template-parts/post/content.php:75
+msgid "Previous page"
+msgstr ""
+
+#: archive.php:65 page.php:35 search.php:53 single.php:35
+#: template-fullwidth.php:21 template-parts/post/content-search.php:43
+#: template-parts/post/content.php:74
+msgid "Next page"
+msgstr ""
+
+#: archive.php:66 index.php:71 page.php:36 search.php:54 single.php:36
+#: template-fullwidth.php:22
+msgid "Page"
+msgstr ""
+
+#: comments.php:4
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:11
+msgid "No comment"
+msgstr ""
+
+#: comments.php:11
+msgid "Has one comment"
+msgstr ""
+
+#: comments.php:11
+#, php-format
+msgid "% comments"
+msgstr ""
+
+#: comments.php:11
+#, php-format
+msgid "to &#8220;%s&#8221;"
+msgstr ""
+
+#: comments.php:12
+msgid "You can "
+msgstr ""
+
+#: comments.php:12
+msgid "leave a reply"
+msgstr ""
+
+#: comments.php:12
+msgid " or "
+msgstr ""
+
+#: comments.php:12
+msgid "Trackback"
+msgstr ""
+
+#: comments.php:12
+msgid "this post."
+msgstr ""
+
+#: comments.php:24
+msgid "Comment pages"
+msgstr ""
+
+#: comments.php:52
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: comments.php:63
+msgid "Your email address will not be published."
+msgstr ""
+
+#: comments.php:65
+msgid "Leave a Reply"
+msgstr ""
+
+#: functions.php:40
+msgid "Top Menu"
+msgstr ""
+
+#: functions.php:41
+msgid "Top Left Menu (Split Navigation Bar)"
+msgstr ""
+
+#: functions.php:341
+msgid "Updating"
+msgstr ""
+
+#: functions.php:342
+msgid "Complete"
+msgstr ""
+
+#: functions.php:343
+msgid "Error"
+msgstr ""
+
+#: functions.php:344 inc/customizer-options.php:170
+msgid "Restore Defaults"
+msgstr ""
+
+#: functions.php:345
+msgid "Click OK to reset. Any Cactus options will be restored!"
+msgstr ""
+
+#: functions.php:346
+msgid "Click OK to import. Any Cactus options will be overwritten!"
+msgstr ""
+
+#: functions.php:387
+#, php-format
+msgid "by %s"
+msgstr ""
+
+#: functions.php:410
+#, php-format
+msgid "<span class=\"screen-reader-text\">Posted on</span> %s "
+msgstr ""
+
+#: functions.php:423
+#, php-format
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: functions.php:439
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:441
+msgid "Add widgets here to appear in your sidebar."
+msgstr ""
+
+#: functions.php:449
+msgid "Page Sidebar"
+msgstr ""
+
+#: functions.php:451
+msgid "Add widgets here to appear in your pages sidebar."
+msgstr ""
+
+#: functions.php:459
+msgid "Blog Sidebar"
+msgstr ""
+
+#: functions.php:461
+msgid "Add widgets here to appear in your posts sidebar."
+msgstr ""
+
+#: functions.php:469
+msgid "Archives"
+msgstr ""
+
+#: functions.php:471
+msgid "Add widgets here to appear in your posts list sidebar."
+msgstr ""
+
+#: functions.php:480
+msgid "WooCommerce Single Product"
+msgstr ""
+
+#: functions.php:482
+msgid "Add widgets here to appear in your products sidebar."
+msgstr ""
+
+#: functions.php:490
+msgid "WooCommerce Archives"
+msgstr ""
+
+#: functions.php:492
+msgid "Add widgets here to appear in your products list sidebar."
+msgstr ""
+
+#: functions.php:500
+msgid "Footer 1"
+msgstr ""
+
+#: functions.php:502 functions.php:512 functions.php:522 functions.php:532
+msgid "Add widgets here to appear in your footer."
+msgstr ""
+
+#: functions.php:510
+msgid "Footer 2"
+msgstr ""
+
+#: functions.php:520
+msgid "Footer 3"
+msgstr ""
+
+#: functions.php:530
+msgid "Footer 4"
+msgstr ""
+
+#: functions.php:556
+#: inc/customizer-library/custom-controls/editor/editor-control.php:44
+msgid "(Edit)"
+msgstr ""
+
+#: functions.php:561
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:584 inc/customizer-options.php:21
+msgid "Home"
+msgstr ""
+
+#: functions.php:641
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: functions.php:645
+#, php-format
+msgid "Tag Archives: %s"
+msgstr ""
+
+#: functions.php:651
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: functions.php:655
+msgid "Not Found"
+msgstr ""
+
+#: functions.php:660
+#, php-format
+msgid "( Page %s )"
+msgstr ""
+
+#: functions.php:803
+msgid "How to create top menu"
+msgstr ""
+
+#: functions.php:1450 woocommerce.php:92
+msgid "Sale!"
+msgstr ""
+
+#: functions.php:1531
+msgid "Cactus Companion"
+msgstr ""
+
+#: functions.php:1593
+msgid "Go to Customize"
+msgstr ""
+
+#: functions.php:1951
+msgid "View your shopping cart"
+msgstr ""
+
+#: functions.php:1952
+msgid "Start shopping"
+msgstr ""
+
+#: functions.php:2003
+msgid "Mega Menu"
+msgstr ""
+
+#: functions.php:2007
+msgid "No"
+msgstr ""
+
+#: functions.php:2008
+msgid "Yes"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:339
+msgid "Install Required Plugins"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:340
+msgid "Install Plugins"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:342
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:344
+#, php-format
+msgid "Updating Plugin: %s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:345
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:397
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:398
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:399
+#: inc/class-tgm-plugin-activation.php:3304
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:400
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:402
+#, php-format
+msgid "No action taken. Plugin %1$s was already active."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:404
+#, php-format
+msgid ""
+"Plugin not activated. A higher version of %s is needed for this theme. "
+"Please update the plugin."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:406
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:407
+msgid "Dismiss this notice"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:408
+msgid ""
+"There are one or more required or recommended plugins to install, update or "
+"activate."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:409
+msgid "Please contact the administrator of this site for help."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2106
+#, php-format
+msgid "TGMPA v%s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2415
+msgid "Required"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2418
+msgid "Recommended"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2434
+msgid "WordPress Repository"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2437
+msgid "External Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2440
+msgid "Pre-Packaged"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2457
+msgid "Not Installed"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2461
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2463
+msgid "Active"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2469
+msgid "Required Update not Available"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2472
+msgid "Requires Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2475
+msgid "Update recommended"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2632
+msgid "Installed version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2640
+msgid "Minimum required version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2652
+msgid "Available version:"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2689
+msgid "Plugin"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2690
+msgid "Source"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2691
+msgid "Type"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2695
+msgid "Version"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2696
+msgid "Status"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2745
+#, php-format
+msgid "Install %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2750
+#, php-format
+msgid "Update %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2756
+#, php-format
+msgid "Activate %2$s"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2861
+msgid "Install"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2867
+msgid "Update"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2870
+#: inc/plugin-install/class-plugin-install-helper.php:78
+msgid "Activate"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2901
+msgid "No plugins were selected to be installed. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2903
+msgid "No plugins were selected to be updated. No action taken."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2944
+msgid "No plugins are available to be installed at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:2946
+msgid "No plugins are available to be updated at this time."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3303
+msgid "Plugin activation failed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3647
+#, php-format
+msgid "Updating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3650
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3652
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3656
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3658
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3659
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3661
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3664
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3666
+#, php-format
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3667
+msgid "All installations have been completed."
+msgstr ""
+
+#: inc/class-tgm-plugin-activation.php:3669
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: inc/customizer-library/custom-controls/editor/editor-page.php:15
+msgid "Save and close"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:14
+msgid "Standard Fonts"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:16
+msgid "Google Fonts"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:113
+#: sections/template-works.php:97
+msgid "All"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:114
+msgid "Cyrillic"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:115
+msgid "Cyrillic Extended"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:116
+msgid "Devanagari"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:117
+msgid "Greek"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:118
+msgid "Greek Extended"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:119
+msgid "Khmer"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:120
+msgid "Latin"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:121
+msgid "Latin Extended"
+msgstr ""
+
+#: inc/customizer-library/extensions/fonts.php:122
+msgid "Vietnamese"
+msgstr ""
+
+#: inc/customizer-notify/class-cactus-customizer-notify.php:164
+msgid "Activating"
+msgstr ""
+
+#: inc/customizer-options.php:19
+msgid "Section Banner"
+msgstr ""
+
+#: inc/customizer-options.php:26
+msgid "Section Service"
+msgstr ""
+
+#: inc/customizer-options.php:29 inc/customizer-options.php:985
+msgid "Service"
+msgstr ""
+
+#: inc/customizer-options.php:34
+msgid "Section Works"
+msgstr ""
+
+#: inc/customizer-options.php:35
+msgid "Our Works"
+msgstr ""
+
+#: inc/customizer-options.php:37 inc/customizer-options.php:1056
+msgid "Works"
+msgstr ""
+
+#: inc/customizer-options.php:42
+msgid "Section Promo"
+msgstr ""
+
+#: inc/customizer-options.php:43 inc/customizer-options.php:46
+msgid "About"
+msgstr ""
+
+#: inc/customizer-options.php:51
+msgid "Section Team"
+msgstr ""
+
+#: inc/customizer-options.php:52
+msgid "Meet Our Team"
+msgstr ""
+
+#: inc/customizer-options.php:55
+msgid "Team"
+msgstr ""
+
+#: inc/customizer-options.php:60
+msgid "Section Counter"
+msgstr ""
+
+#: inc/customizer-options.php:65 inc/customizer-options.php:1255
+msgid "Counter"
+msgstr ""
+
+#: inc/customizer-options.php:70
+msgid "Section Testimonials"
+msgstr ""
+
+#: inc/customizer-options.php:71
+msgid "What Clients Say"
+msgstr ""
+
+#: inc/customizer-options.php:74
+msgid "Testimonials"
+msgstr ""
+
+#: inc/customizer-options.php:79
+msgid "Section Clients"
+msgstr ""
+
+#: inc/customizer-options.php:89
+msgid "Section News"
+msgstr ""
+
+#: inc/customizer-options.php:90
+msgid "Recent News"
+msgstr ""
+
+#: inc/customizer-options.php:92
+msgid "News"
+msgstr ""
+
+#: inc/customizer-options.php:97
+msgid "Section Contact"
+msgstr ""
+
+#: inc/customizer-options.php:98
+msgid "Keep in Touch"
+msgstr ""
+
+#: inc/customizer-options.php:100
+msgid "Contact"
+msgstr ""
+
+#: inc/customizer-options.php:105
+msgid "Section Shop"
+msgstr ""
+
+#: inc/customizer-options.php:106 inc/customizer-options.php:108
+msgid "Shop"
+msgstr ""
+
+#: inc/customizer-options.php:140
+msgid "Blank"
+msgstr ""
+
+#: inc/customizer-options.php:141
+msgid "Self"
+msgstr ""
+
+#: inc/customizer-options.php:154
+msgid "Cactus: About Theme"
+msgstr ""
+
+#: inc/customizer-options.php:166
+msgid "Check the step-by-step manual before building your site."
+msgstr ""
+
+#: inc/customizer-options.php:168
+msgid "Online Documententation"
+msgstr ""
+
+#: inc/customizer-options.php:184 inc/customizer-options.php:186
+#: inc/customizer-options.php:188 inc/customizer-options.php:190
+#: inc/customizer-options.php:192 inc/customizer-options.php:194
+msgid "PRO"
+msgstr ""
+
+#: inc/customizer-options.php:184
+msgid "Section - Pricing"
+msgstr ""
+
+#: inc/customizer-options.php:186
+msgid "Section - Call to Action"
+msgstr ""
+
+#: inc/customizer-options.php:188
+msgid "Section - Jetpack Subscribe"
+msgstr ""
+
+#: inc/customizer-options.php:190
+msgid "Section - Video"
+msgstr ""
+
+#: inc/customizer-options.php:192
+msgid "Section Reordering"
+msgstr ""
+
+#: inc/customizer-options.php:194
+msgid "Quality Support"
+msgstr ""
+
+#: inc/customizer-options.php:197
+msgid "Get the PRO version!"
+msgstr ""
+
+#: inc/customizer-options.php:210
+msgid "Cactus: Header Options"
+msgstr ""
+
+#: inc/customizer-options.php:218
+msgid "General Options"
+msgstr ""
+
+#: inc/customizer-options.php:225
+msgid "Full-width Header"
+msgstr ""
+
+#: inc/customizer-options.php:234
+msgid "Hover Style"
+msgstr ""
+
+#: inc/customizer-options.php:239
+msgid "None"
+msgstr ""
+
+#: inc/customizer-options.php:240
+msgid "Underline"
+msgstr ""
+
+#: inc/customizer-options.php:241
+msgid "Outline"
+msgstr ""
+
+#: inc/customizer-options.php:249
+msgid "Make Header Transparent in Frontpage"
+msgstr ""
+
+#: inc/customizer-options.php:258 inc/customizer-options.php:1619
+msgid "Color Scheme"
+msgstr ""
+
+#: inc/customizer-options.php:261
+msgid "Default"
+msgstr ""
+
+#: inc/customizer-options.php:261 inc/customizer-options.php:2257
+msgid "Light"
+msgstr ""
+
+#: inc/customizer-options.php:268
+msgid "Sticky Header Logo"
+msgstr ""
+
+#: inc/customizer-options.php:279
+msgid "Top Bar"
+msgstr ""
+
+#: inc/customizer-options.php:286
+msgid "Display Top Bar"
+msgstr ""
+
+#: inc/customizer-options.php:295
+msgid "Top Bar Left"
+msgstr ""
+
+#: inc/customizer-options.php:304 inc/customizer-options.php:342
+#: inc/customizer-options.php:377 inc/customizer-options.php:496
+#: inc/customizer-options.php:532 inc/customizer-options.php:558
+#: inc/customizer-options.php:627 inc/customizer-options.php:1708
+#: inc/customizer-options.php:1760
+msgid "Font-awesome Icon"
+msgstr ""
+
+#: inc/customizer-options.php:305 inc/customizer-options.php:378
+#: inc/customizer-options.php:533 inc/customizer-options.php:559
+#: inc/customizer-options.php:1148 inc/customizer-options.php:1319
+msgid "Text"
+msgstr ""
+
+#: inc/customizer-options.php:306 inc/customizer-options.php:343
+#: inc/customizer-options.php:379 inc/customizer-options.php:498
+#: inc/customizer-options.php:534 inc/customizer-options.php:560
+#: inc/customizer-options.php:629 inc/customizer-options.php:1201
+#: inc/customizer-options.php:1363 inc/customizer-options.php:1710
+#: inc/customizer-options.php:1762
+msgid "Link"
+msgstr ""
+
+#: inc/customizer-options.php:307 inc/customizer-options.php:344
+#: inc/customizer-options.php:380 inc/customizer-options.php:535
+#: inc/customizer-options.php:561
+msgid "Target"
+msgstr ""
+
+#: inc/customizer-options.php:333
+msgid "Top Bar Icons"
+msgstr ""
+
+#: inc/customizer-options.php:368
+msgid "Top Bar Right"
+msgstr ""
+
+#: inc/customizer-options.php:411
+msgid "Navigation Bar"
+msgstr ""
+
+#: inc/customizer-options.php:417
+msgid "Display Search Icon"
+msgstr ""
+
+#: inc/customizer-options.php:427
+msgid "Title Bar Layout"
+msgstr ""
+
+#: inc/customizer-options.php:431
+msgid "Left Title, right breadcrumbs"
+msgstr ""
+
+#: inc/customizer-options.php:432
+msgid "Right Title, left breadcrumbs"
+msgstr ""
+
+#: inc/customizer-options.php:433 inc/customizer-options.php:514
+#: inc/customizer-options.php:588 inc/customizer-options.php:602
+msgid "Center"
+msgstr ""
+
+#: inc/customizer-options.php:434 inc/customizer-options.php:512
+#: inc/customizer-options.php:587 inc/customizer-options.php:601
+msgid "Left"
+msgstr ""
+
+#: inc/customizer-options.php:435 inc/customizer-options.php:513
+msgid "Right"
+msgstr ""
+
+#: inc/customizer-options.php:444
+msgid "Sticky Navigation Bar"
+msgstr ""
+
+#: inc/customizer-options.php:453
+msgid "Navigation Bar Style"
+msgstr ""
+
+#: inc/customizer-options.php:458
+msgid "Inline Navigation Bar"
+msgstr ""
+
+#: inc/customizer-options.php:459
+msgid "Classic Navigation Bar"
+msgstr ""
+
+#: inc/customizer-options.php:460
+msgid "Split Navigation Bar"
+msgstr ""
+
+#: inc/customizer-options.php:468
+msgid "Display Main Menu Items on Frontpage"
+msgstr ""
+
+#: inc/customizer-options.php:471
+msgid "Display main menu items on frontpage instead of primary menu."
+msgstr ""
+
+#: inc/customizer-options.php:487
+msgid "Main Menu Items"
+msgstr ""
+
+#: inc/customizer-options.php:497 inc/customizer-options.php:628
+#: inc/customizer-options.php:1264 inc/customizer-options.php:1362
+#: inc/customizer-options.php:1565 inc/customizer-options.php:1709
+#: inc/customizer-options.php:1761
+msgid "Title"
+msgstr ""
+
+#: inc/customizer-options.php:506 inc/customizer-options.php:595
+#: inc/customizer-options.php:637
+msgid "Menu Position"
+msgstr ""
+
+#: inc/customizer-options.php:515 inc/customizer-options.php:643
+msgid "Justified"
+msgstr ""
+
+#: inc/customizer-options.php:523
+msgid "Widgets: Logo Row(Left)"
+msgstr ""
+
+#: inc/customizer-options.php:549
+msgid "Widgets: Logo Row(Right)"
+msgstr ""
+
+#: inc/customizer-options.php:581
+msgid "Logo Position"
+msgstr ""
+
+#: inc/customizer-options.php:618
+msgid "Left Menu Items"
+msgstr ""
+
+#: inc/customizer-options.php:644
+msgid "Inside"
+msgstr ""
+
+#: inc/customizer-options.php:645
+msgid "Outside"
+msgstr ""
+
+#: inc/customizer-options.php:655
+msgid "Cactus: Frontpage Sections"
+msgstr ""
+
+#: inc/customizer-options.php:674
+msgid "Hide Section"
+msgstr ""
+
+#: inc/customizer-options.php:686 inc/customizer-options.php:701
+#: inc/customizer-options.php:717 inc/customizer-options.php:733
+#: inc/customizer-options.php:748 inc/customizer-options.php:763
+msgid "Style"
+msgstr ""
+
+#: inc/customizer-options.php:692 inc/customizer-options.php:693
+#: inc/customizer-options.php:707 inc/customizer-options.php:708
+#: inc/customizer-options.php:739 inc/customizer-options.php:740
+#: inc/customizer-options.php:754 inc/customizer-options.php:755
+#: inc/customizer-options.php:1693
+#, php-format
+msgid "Style %s"
+msgstr ""
+
+#: inc/customizer-options.php:723 inc/customizer-options.php:769
+msgid "Image on Left"
+msgstr ""
+
+#: inc/customizer-options.php:724 inc/customizer-options.php:770
+msgid "Image on Right"
+msgstr ""
+
+#: inc/customizer-options.php:779
+msgid "Section Title"
+msgstr ""
+
+#: inc/customizer-options.php:789
+msgid "Section SubTitle"
+msgstr ""
+
+#: inc/customizer-options.php:802
+msgid "Banner Type"
+msgstr ""
+
+#: inc/customizer-options.php:806 inc/customizer-options.php:812
+msgid "Slider"
+msgstr ""
+
+#: inc/customizer-options.php:806
+msgid "Video Background"
+msgstr ""
+
+#: inc/customizer-options.php:821
+msgid "Big Title"
+msgstr ""
+
+#: inc/customizer-options.php:822
+msgid "Sub-Title"
+msgstr ""
+
+#: inc/customizer-options.php:823 inc/customizer-options.php:1139
+#: inc/customizer-options.php:1361 inc/customizer-options.php:1469
+msgid "Image"
+msgstr ""
+
+#: inc/customizer-options.php:824
+msgid "Learn More"
+msgstr ""
+
+#: inc/customizer-options.php:824 inc/customizer-options.php:1157
+#: inc/customizer-options.php:1423 inc/customizer-options.php:1509
+#: inc/customizer-options.php:1589
+msgid "Button Text"
+msgstr ""
+
+#: inc/customizer-options.php:825 inc/customizer-options.php:1166
+#: inc/customizer-options.php:1432 inc/customizer-options.php:1598
+msgid "Button Link"
+msgstr ""
+
+#: inc/customizer-options.php:841
+msgid "AutoPlay"
+msgstr ""
+
+#: inc/customizer-options.php:849
+msgid "AutoPlay Timeout"
+msgstr ""
+
+#: inc/customizer-options.php:858
+msgid "Poster"
+msgstr ""
+
+#: inc/customizer-options.php:867
+msgid "YouTube/Vimeo Video URL"
+msgstr ""
+
+#: inc/customizer-options.php:876
+msgid "Video Banner Title"
+msgstr ""
+
+#: inc/customizer-options.php:885
+msgid "Video Banner Subtitle"
+msgstr ""
+
+#: inc/customizer-options.php:894
+msgid "Video Banner Button Text"
+msgstr ""
+
+#: inc/customizer-options.php:898 inc/customizer-options.php:1161
+msgid "Read More"
+msgstr ""
+
+#: inc/customizer-options.php:903
+msgid "Video Banner Button Link"
+msgstr ""
+
+#: inc/customizer-options.php:912
+msgid "Text Align"
+msgstr ""
+
+#: inc/customizer-options.php:917
+msgid "Align Left"
+msgstr ""
+
+#: inc/customizer-options.php:917
+msgid "Align Center"
+msgstr ""
+
+#: inc/customizer-options.php:917
+msgid "Align Right"
+msgstr ""
+
+#: inc/customizer-options.php:922
+msgid "Bottom Separator"
+msgstr ""
+
+#: inc/customizer-options.php:930
+msgid "Separator Type"
+msgstr ""
+
+#: inc/customizer-options.php:934
+msgid "Diagonal"
+msgstr ""
+
+#: inc/customizer-options.php:935
+msgid "Diagonal Reverse"
+msgstr ""
+
+#: inc/customizer-options.php:936
+msgid "Triangle Up"
+msgstr ""
+
+#: inc/customizer-options.php:937
+msgid "Triangle Down"
+msgstr ""
+
+#: inc/customizer-options.php:938
+msgid "Big Triangle Up"
+msgstr ""
+
+#: inc/customizer-options.php:939
+msgid "Big Triangle Down"
+msgstr ""
+
+#: inc/customizer-options.php:940
+msgid "Curve Up"
+msgstr ""
+
+#: inc/customizer-options.php:941
+msgid "Curve Down"
+msgstr ""
+
+#: inc/customizer-options.php:942
+msgid "Cloud"
+msgstr ""
+
+#: inc/customizer-options.php:948
+msgid "Separator Color"
+msgstr ""
+
+#: inc/customizer-options.php:956
+msgid "Separator Height"
+msgstr ""
+
+#: inc/customizer-options.php:976 inc/customizer-options.php:1046
+#: inc/customizer-options.php:1179 inc/customizer-options.php:1246
+#: inc/customizer-options.php:1299 inc/customizer-options.php:1343
+#: inc/customizer-options.php:1414
+msgid "Columns"
+msgstr ""
+
+#: inc/customizer-options.php:995 inc/customizer-options.php:1265
+#, php-format
+msgid ""
+"Full list of FA icons could be found at <br />\n"
+"<a href=\"%s\" target=\"_blank\">%s</a>"
+msgstr ""
+
+#: inc/customizer-options.php:1126
+msgid "Display Filter Headings"
+msgstr ""
+
+#: inc/customizer-options.php:1189
+msgid "Member"
+msgstr ""
+
+#: inc/customizer-options.php:1198 inc/customizer-options.php:1316
+msgid "Avatar"
+msgstr ""
+
+#: inc/customizer-options.php:1199 inc/customizer-options.php:1317
+msgid "Name"
+msgstr ""
+
+#: inc/customizer-options.php:1200 inc/customizer-options.php:1318
+msgid "Byline"
+msgstr ""
+
+#: inc/customizer-options.php:1238
+msgid "Enable Animation"
+msgstr ""
+
+#: inc/customizer-options.php:1265
+msgid "Font-awsome Icon"
+msgstr ""
+
+#: inc/customizer-options.php:1267
+msgid "Number"
+msgstr ""
+
+#: inc/customizer-options.php:1307
+msgid "Testimonial"
+msgstr ""
+
+#: inc/customizer-options.php:1352
+msgid "Clients"
+msgstr ""
+
+#: inc/customizer-options.php:1406
+msgid "Posts Num"
+msgstr ""
+
+#: inc/customizer-options.php:1427
+msgid "View The Blog"
+msgstr ""
+
+#: inc/customizer-options.php:1444
+msgid "Address"
+msgstr ""
+
+#: inc/customizer-options.php:1447 inc/customizer-options.php:1481
+msgid "49 Costa Street, New York City, USA"
+msgstr ""
+
+#: inc/customizer-options.php:1452
+msgid "Email"
+msgstr ""
+
+#: inc/customizer-options.php:1460
+msgid "Tel"
+msgstr ""
+
+#: inc/customizer-options.php:1478
+msgid "Google Map Address"
+msgstr ""
+
+#: inc/customizer-options.php:1486
+msgid "Google Map API Key"
+msgstr ""
+
+#: inc/customizer-options.php:1494
+msgid "Google Map Height"
+msgstr ""
+
+#: inc/customizer-options.php:1502
+msgid "Google Map Zoom"
+msgstr ""
+
+#: inc/customizer-options.php:1519
+msgid ""
+"Install & active plugin \"Cactus Companion\" to enable the contact form & "
+"google map."
+msgstr ""
+
+#: inc/customizer-options.php:1523
+msgid "Contact From"
+msgstr ""
+
+#: inc/customizer-options.php:1536
+msgid "Number of Items"
+msgstr ""
+
+#: inc/customizer-options.php:1548
+msgid "Categories"
+msgstr ""
+
+#: inc/customizer-options.php:1560
+msgid "Order By"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "Date"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "ID"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "Menu Order"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "Popularity"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "Rand"
+msgstr ""
+
+#: inc/customizer-options.php:1565
+msgid "Rating"
+msgstr ""
+
+#: inc/customizer-options.php:1570
+msgid "Order"
+msgstr ""
+
+#: inc/customizer-options.php:1575
+msgid "Ascending"
+msgstr ""
+
+#: inc/customizer-options.php:1575
+msgid "Descending"
+msgstr ""
+
+#: inc/customizer-options.php:1580
+msgid "WooCommerce shortcode"
+msgstr ""
+
+#: inc/customizer-options.php:1593
+msgid "More Products"
+msgstr ""
+
+#: inc/customizer-options.php:1623
+msgid "Default Color"
+msgstr ""
+
+#: inc/customizer-options.php:1623
+msgid "Light Color"
+msgstr ""
+
+#: inc/customizer-options.php:1630
+msgid "Background Color"
+msgstr ""
+
+#: inc/customizer-options.php:1638
+msgid "Background Image"
+msgstr ""
+
+#: inc/customizer-options.php:1647
+msgid "Parallax Scrolling"
+msgstr ""
+
+#: inc/customizer-options.php:1656
+msgid "Section ID"
+msgstr ""
+
+#: inc/customizer-options.php:1671
+msgid "Cactus: Footer Options"
+msgstr ""
+
+#: inc/customizer-options.php:1677
+msgid "Display Footer Widgets"
+msgstr ""
+
+#: inc/customizer-options.php:1688
+msgid "Footer Style"
+msgstr ""
+
+#: inc/customizer-options.php:1699
+msgid "Footer Left Icons"
+msgstr ""
+
+#: inc/customizer-options.php:1735
+msgid "Footer Logo"
+msgstr ""
+
+#: inc/customizer-options.php:1742
+msgid "Display Footer Icons"
+msgstr ""
+
+#: inc/customizer-options.php:1751
+msgid "Footer Icons"
+msgstr ""
+
+#: inc/customizer-options.php:1796
+msgid "Copyright"
+msgstr ""
+
+#: inc/customizer-options.php:1811
+msgid "Cactus: Typography"
+msgstr ""
+
+#: inc/customizer-options.php:1818
+msgid "Font Family"
+msgstr ""
+
+#: inc/customizer-options.php:1825
+msgid "Headings font family"
+msgstr ""
+
+#: inc/customizer-options.php:1834
+msgid "Body font family"
+msgstr ""
+
+#: inc/customizer-options.php:1844
+msgid "General Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1851
+msgid "Body Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1865
+msgid "H1 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1878
+msgid "H2 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1891
+msgid "H3 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1904
+msgid "H4 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1917
+msgid "H5 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1930
+msgid "H6 Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1945
+msgid "Section Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1952
+msgid "Section Title Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1966
+msgid "Section Subtitle Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1981
+msgid "Section Item Ttile Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:1996
+msgid "Section Content Font Size"
+msgstr ""
+
+#: inc/customizer-options.php:2014
+msgid "Cactus: Pages & Posts Options"
+msgstr ""
+
+#: inc/customizer-options.php:2021
+msgid "Title Bar"
+msgstr ""
+
+#: inc/customizer-options.php:2028
+msgid "Display Title Bar"
+msgstr ""
+
+#: inc/customizer-options.php:2039
+msgid "Posts archive"
+msgstr ""
+
+#: inc/customizer-options.php:2046
+msgid "Posts Archive Layout"
+msgstr ""
+
+#: inc/customizer-options.php:2052
+msgid "Full Width Image"
+msgstr ""
+
+#: inc/customizer-options.php:2053
+msgid "Side Image"
+msgstr ""
+
+#: inc/customizer-options.php:2054
+msgid "Grid"
+msgstr ""
+
+#: inc/customizer-options.php:2063 inc/customizer-options.php:2067
+msgid "Excerpt"
+msgstr ""
+
+#: inc/customizer-options.php:2068
+msgid "Full Post"
+msgstr ""
+
+#: inc/customizer-options.php:2075 inc/customizer-options.php:2121
+msgid "Display Feature Image"
+msgstr ""
+
+#: inc/customizer-options.php:2084 inc/customizer-options.php:2130
+msgid "Display Category"
+msgstr ""
+
+#: inc/customizer-options.php:2092 inc/customizer-options.php:2138
+msgid "Display Author"
+msgstr ""
+
+#: inc/customizer-options.php:2100 inc/customizer-options.php:2146
+msgid "Display Date"
+msgstr ""
+
+#: inc/customizer-options.php:2111
+msgid "Single Post"
+msgstr ""
+
+#: inc/customizer-options.php:2156
+msgid "Sidebar Settings"
+msgstr ""
+
+#: inc/customizer-options.php:2164
+msgid "Sidebar: Pages"
+msgstr ""
+
+#: inc/customizer-options.php:2170 inc/customizer-options.php:2184
+#: inc/customizer-options.php:2196 inc/customizer-options.php:2198
+#: inc/customizer-options.php:2210 inc/customizer-options.php:2212
+#: inc/customizer-options.php:2224 inc/customizer-options.php:2226
+msgid "No Sidebar"
+msgstr ""
+
+#: inc/customizer-options.php:2171 inc/customizer-options.php:2185
+#: inc/customizer-options.php:2196 inc/customizer-options.php:2199
+#: inc/customizer-options.php:2210 inc/customizer-options.php:2213
+#: inc/customizer-options.php:2224 inc/customizer-options.php:2227
+msgid "Left Sidebar"
+msgstr ""
+
+#: inc/customizer-options.php:2172 inc/customizer-options.php:2186
+#: inc/customizer-options.php:2196 inc/customizer-options.php:2200
+#: inc/customizer-options.php:2210 inc/customizer-options.php:2214
+#: inc/customizer-options.php:2224 inc/customizer-options.php:2228
+msgid "Right Sidebar"
+msgstr ""
+
+#: inc/customizer-options.php:2178
+msgid "Sidebar: Single Post"
+msgstr ""
+
+#: inc/customizer-options.php:2192
+msgid "Sidebar: Posts Archive"
+msgstr ""
+
+#: inc/customizer-options.php:2206
+msgid "Sidebar: WooCommerce Single Product"
+msgstr ""
+
+#: inc/customizer-options.php:2220
+msgid "Sidebar: WooCommerce Archive"
+msgstr ""
+
+#: inc/customizer-options.php:2244
+msgid "Cactus: General Options"
+msgstr ""
+
+#: inc/customizer-options.php:2251
+msgid "Scheme"
+msgstr ""
+
+#: inc/customizer-options.php:2258
+msgid "Dark"
+msgstr ""
+
+#: inc/customizer-options.php:2265
+msgid "Display Page Pre-loader"
+msgstr ""
+
+#: inc/customizer-options.php:2274
+msgid "Pre-loader Background Color"
+msgstr ""
+
+#: inc/customizer-options.php:2283
+msgid "Pre-loader Background Opacity"
+msgstr ""
+
+#: inc/customizer-options.php:2297
+msgid "Pre-loader Image"
+msgstr ""
+
+#: inc/customizer-options.php:2306
+msgid "Enable Scroll to Top Button"
+msgstr ""
+
+#: inc/customizer-options.php:2316
+msgid "Homepage Animation"
+msgstr ""
+
+#: inc/plugin-install/class-plugin-install-helper.php:58
+msgid "Install and activate"
+msgstr ""
+
+#: index.php:69
+msgid "Previous Page"
+msgstr ""
+
+#: index.php:70
+msgid "Next Page"
+msgstr ""
+
+#: searchform.php:3
+msgid "Search for"
+msgstr ""
+
+#: single.php:47
+msgid "Tags:"
+msgstr ""
+
+#: template-parts/footer/site-info.php:52
+#: template-parts/footer/site-info.php:111
+#, php-format
+msgid ""
+"Designed by <a href=\"%s\" target=\"_blank\">Vela Themes</a>. All Rights "
+"Reserved."
+msgstr ""
+
+#: template-parts/page/content.php:8 template-parts/post/content-search.php:37
+#: template-parts/post/content.php:68
+msgid "Pages:"
+msgstr ""
+
+#: template-parts/post/content-none.php:3
+msgid "Nothing Found"
+msgstr ""
+
+#: template-parts/post/content-none.php:9
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: template-parts/post/content-none.php:13
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#: template-parts/post/content-search.php:58 template-parts/post/content.php:87
+msgid "Continue Reading..."
+msgstr ""

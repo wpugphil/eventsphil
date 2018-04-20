@@ -75,3 +75,19 @@ label[for="_customize-input-cactus[text_align_banner]-radio-right"]:before {
     font: normal normal normal 14px/12px FontAwesome;
     margin-right: 5px;
 }
+
+.cactus-section:hover:before {
+    border-color: #00a0d0;
+}
+
+.cactus-section:before {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    border: 2px solid transparent;
+    content: "";
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
