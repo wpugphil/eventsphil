@@ -41,6 +41,7 @@ The site code is revision controlled from this central repository.
 
 ## Credits
 
-- Pantheon for the hosting
+- Pantheon for the hosting and sample composer workflow https://github.com/pantheon-systems/example-wordpress-composer
+
 - Underscores by Automattic for the base theme
 - Roots / Bedrock for the latest WordPress tooling
