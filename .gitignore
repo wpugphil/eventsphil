@@ -40,6 +40,8 @@ web/private/scripts/quicksilver
 wiki/*
 wiki/
 
+.ftpconfig
+
 web/wp-content/themes/bootstrapfast
 web/wp-content/themes/twentyseventeen
 

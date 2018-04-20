@@ -11,11 +11,11 @@
 		default:
 			$aside_class = 'no-aside';
 		break;
-		
+
 		};
-		
+
 ?>
-<?php echo apply_filters('cactus_page_title_bar','','page');?>  
+<?php echo apply_filters( 'cactus_page_title_bar','','page');?>
 <div class="page-wrap">
 <?php do_action('cactus_before_page_wrap');?>
   <div class="container">
@@ -28,7 +28,8 @@
 				/* Start the Loop */
 				while ( have_posts() ) : the_post();
 
-					get_template_part( 'template-parts/page/content' );
+					echo get_template_part();
+					get_template_part( 'template-parts/page/content');
 
 					the_posts_pagination( array(
 					'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous page', 'cactus' ) . '</span>',
@@ -38,7 +39,7 @@
 
 				endwhile; // End of the loop.
 			?>
-           <?php do_action('cactus_after_page_content');?>         
+           <?php do_action('cactus_after_page_content');?>
           </article>
           <?php
 		  global $post;
@@ -49,7 +50,7 @@
               <?php
 						comments_template();
 			  ?>
-            </div>            
+            </div>
           </div>
           <?php endif;?>
         </section>

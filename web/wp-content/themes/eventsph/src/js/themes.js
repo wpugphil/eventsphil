@@ -84,7 +84,7 @@
 			parentLink = container.querySelectorAll( '.menu-item-has-children > a, .page_item_has_children > a' );
 
 		if ( 'ontouchstart' in window ) {
-			touchStartFn = function( e ) {
+			touchStartFn        = function( e ) {
 				var menuItem = this.parentNode, i;
 
 				if ( ! menuItem.classList.contains( 'focus' ) ) {
@@ -120,23 +120,25 @@
 	var isIe = /(trident|msie)/i.test( navigator.userAgent );
 
 	if ( isIe && document.getElementById && window.addEventListener ) {
-		window.addEventListener( 'hashchange', function() {
-			var id = location.hash.substring( 1 ),
+		window.addEventListener(
+			'hashchange', function() {
+				var id = location.hash.substring( 1 ),
 				element;
 
-			if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
-				return;
-			}
-
-			element = document.getElementById( id );
-
-			if ( element ) {
-				if ( ! ( /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) ) {
-					element.tabIndex = -1;
+				if ( ! ( /^[A-z0-9_-]+$/.test( id ) ) ) {
+					return;
 				}
 
-				element.focus();
-			}
-		}, false );
+				element = document.getElementById( id );
+
+				if ( element ) {
+					if ( ! ( /^(?:a|select|input|button|textarea)$/i.test( element.tagName ) ) ) {
+						element.tabIndex = -1;
+					}
+
+					element.focus();
+				}
+			}, false
+		);
 	}
 })();
