@@ -33,7 +33,7 @@ This is a community organized project where tech groups from the Philippines can
 
 ## Updating core, installing theme or plugins
 
-The site code is revision controlled from this central repository.
+The site code is version controlled from this central repository.
 
 1) Update composer.json
 2) lando composer update
@@ -41,6 +41,7 @@ The site code is revision controlled from this central repository.
 
 ## Credits
 
-- Pantheon for the hosting
+- Pantheon for the hosting and sample composer workflow https://github.com/pantheon-systems/example-wordpress-composer
+
 - Underscores by Automattic for the base theme
 - Roots / Bedrock for the latest WordPress tooling
