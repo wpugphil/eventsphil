@@ -33,7 +33,7 @@
     }
   },
   "config": {
-    "devUrl": "http://bootstrapfast.lndo.site/"
+    "devUrl": "http://eventsphil.lndo.site"
   },
 	"paths": {
 		"dist": "assets/",
